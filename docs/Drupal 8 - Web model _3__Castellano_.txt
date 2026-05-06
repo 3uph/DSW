@@ -1,0 +1,124 @@
+        Parte III: Herramientas de
+       navegación y diseño gràfico
+    http://dsw-base-d8-exemple.dsicv.upv.es/drupal3/web
+
+En la web de ejemplo tenéis una guía de cosas que podéis hacer. La idea de la
+práctica 3 es más libre que las anteriores. Se puede experimentar con
+diferentes módulos, temas, configuraciones. Recomendado: hacer copias de
+seguridad de la base de datos de vez en cuando. Especialmente al instalar
+temas, donde pueden surgir problemas con la web.
+
+
+                                 Mega Menu
+
+Un “mega menú” es un tipo de menú desplegable que está de moda desde
+hace unos pocos años. El módulo Drupal 9 MegaMenu permite crear menús
+desplegables que poden ser “mega” o más sencillos.
+
+
+
+
+                    Filtros expuestos de vistas en bloque
+
+Las vistas tienen la opción de mostrar los filtros expuestos (recordad la práctica
+2) como un bloque, para poder colocarlos donde queráis, por ejemplo, en la
+barra lateral:
+                                        !1
+                              URLs amistosas
+
+Es importante disponer de URLs “buenas”, que contengan las palabras clave
+importantes. Para configurarlo de esta manera se puede utilizar el módulo
+Pathauto que permite definir patrones per construir las URLs. Por ejemplo:
+
+
+
+
+El efecto de esto (después de reconstruir las URLS con “Bulk generate”, fijaos
+en la captura de pantalla) es que las URLs seguirán los patrones establecidos:
+
+
+
+
+                                       !2
+!3
+                    Hilo de Ariadna (breadcrumbs)
+
+Si habéis instalado Pathauto podéis instalar también Easy Breadscrumbs para
+poder configurar con mayor detalle el hilo de Ariadna (en inglés,
+breadcrumbs).
+
+
+
+
+         Configuración de la maquetación de les páginas
+
+Drupal 9 incluye como parte del núcleo un módulo fantástico (que hay que
+activar) denominado Layout Builder que permite diseñar la composición del
+tipo de contenido. Visitad por ejemplo las páginas siguientes y fijaros en cómo
+están colocados los diferentes campos:
+
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal3/web/node/13
+(página completa)
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal3/web/node/7 (página
+completa)
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal3/web/articles (lista de
+resúmenes)
+
+
+
+
+                                       !4
+Lo podéis usar en las diferentes presentaciones de los tipos de contenido
+(default, resumen):
+
+
+
+
+                 Maquetación de la página principal
+
+Podéis seleccionar la página que se verá como página principal (home) desde
+Configuración > Parámetros del sitio web. Una forma de maquetarla es utilizar
+una página de tipo Página básica. Podéis maquetarla como queráis, y también
+podéis usar Layout Builder con la opción siguiente para permitir la
+maquetación de cada página individualmente:
+
+
+
+
+                                       !5
+Si creáis una página básica, ahora podréis configurar su maquetación
+individualmente:
+                                 Los temas
+
+Los temas de Drupal se pueden encontrar en drupal.org . Para instalarlos
+podéis usar composer como habéis hecho con los módulos. Se activan en la
+sección “Apariencia”. Cambiar un tema puede cambiar muchas
+configuraciones de visualización. Por ello es necesario actuar con precaución.
+Los temas redefinen las regiones de los bloques y es probable que si se cambia
+de tema haya bloques que desaparezcan de la página y los tendréis que
+colocar de nuevo en las secciones que se desean.
+
+
+En la web de drupal.org encontraréis temas base. NO los debéis utilizar
+porque no son temas completos sino bases para construir temas
+personalizados, que es una cosa que NO haremos en esta asignatura.
+
+
+Un ejemplo de tema: https://www.drupal.org/project/nexus
+
+
+
+
+                                      !6
+                                  CSS i JS
+
+Si queréis hacer pequeñas modificaciones de CSS i/o JS podéis instalar el
+módulo Asset Injector que añadirá la opción a la sección de configuración
+desde donde podréis insertar código CSS i JS.
+
+
+
+
+                                      !7
+

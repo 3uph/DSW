@@ -1,0 +1,235 @@
+Fase 1. Descripción de la organización y
+el proyecto
+Caso de estudio: Gimnasio y centro deportivo
+
+Participantes: Francisco Blanco, Arnau Vila
+
+DESCRIPCIÓN DE LA ORGANIZACIÓN
+
+Nombre, actividad e historia
+
+IronFlow Fitness & Wellness es un centro deportivo integral que busca romper con el
+modelo de gimnasio tradicional "pasivo". Tras varios años operando como un gimnasio
+de barrio con procesos manuales y analógicos, la organización decide dar el salto
+digital para gestionar de forma eficiente una comunidad creciente de socios que
+demandan mayor agilidad y nuevos servicios.
+
+La organización objeto de este proyecto es un gimnasio y centro deportivo orientado a
+ofrecer servicios relacionados con la salud, el entrenamiento y el ocio deportivo. Su
+actividad principal se centra en la práctica de ejercicio físico, la realización de
+actividades dirigidas y la gestión de instalaciones deportivas, como salas de
+musculación, clases colectivas y pistas de pádel.
+
+Además de los servicios tradicionales de un gimnasio, la organización busca ampliar
+su oferta mediante la venta de suplementación deportiva y otros productos
+relacionados con el bienestar y el rendimiento físico. Con ello, pretende consolidarse
+como un espacio integral para sus clientes, cubriendo tanto sus necesidades de
+entrenamiento como de apoyo nutricional y deportivo.
+
+Objetivos de la organización
+
+Entre los principales objetivos de la organización destacan los siguientes:
+
+   •   Fomentar un estilo de vida saludable y activo entre sus usuarios.
+   •   Facilitar el acceso a servicios deportivos de forma cómoda y eficiente.
+   •   Mejorar la experiencia del cliente mediante una gestión digital de reservas,
+       inscripciones, compras y realización de encuestas.
+   •   Incrementar la fidelización de socios ofreciendo una plataforma centralizada
+       con todos los servicios del gimnasio.
+   •   Optimizar la administración interna del negocio mediante herramientas de
+       gestión online.
+
+Quién compone la organización: roles que se ocupan y capacidad de trabajo
+
+La organización está compuesta por distintos perfiles. En primer lugar, se encuentran
+los clientes o socios, que hacen uso de las instalaciones, reservan actividades y
+adquieren productos o servicios. En segundo lugar, están los trabajadores del
+gimnasio, como entrenadores, monitores y personal de atención al cliente, que se
+encargan del funcionamiento diario del centro.
+
+Por otro lado, existe un equipo de administración y gestión, responsable de controlar
+las altas de socios, supervisar las reservas, gestionar los pagos, mantener actualizado
+el catálogo de productos y coordinar la disponibilidad de las instalaciones. Este equipo
+necesita herramientas que permitan centralizar y simplificar todas estas tareas.
+
+MOTIVACIÓN DEL PROYECTO WEB
+
+Formas de comunicación actuales y estratégicas
+
+Actualmente, muchos gimnasios siguen gestionando parte de sus servicios de manera
+presencial, telefónica o a través de aplicaciones dispersas, lo que puede generar
+pérdidas de tiempo, errores en las reservas y una experiencia poco cómoda para el
+usuario. En algunos casos, la información sobre horarios, actividades o disponibilidad
+de pistas no está centralizada o no se actualiza con suficiente rapidez.
+
+Por este motivo, se plantea el desarrollo de una página web que permita reunir todos
+los servicios principales del gimnasio. Esto facilitará tanto la comunicación con los
+usuarios como la gestión interna del negocio.
+
+Público objetivo
+
+El público objetivo principal de la web está formado por los socios y clientes habituales
+del gimnasio, que necesitan consultar horarios, reservar actividades, alquilar pistas de
+pádel, comprar suplementación o gestionar su alta en el centro.
+
+Además, existen otros públicos secundarios de interés:
+
+   •   Nuevos usuarios interesados en apuntarse al gimnasio.
+   •   Personas que buscan alquilar instalaciones deportivas sin necesidad de ser
+       socios.
+   •   Clientes interesados en comprar productos de suplementación o nutrición
+       deportiva.
+   •   Usuarios que deseen informarse sobre tarifas, servicios y promociones antes de
+       registrarse.
+
+¿Por qué una nueva web? ¿Para resolver qué? ¿Por qué ahora?
+
+La organización ha llegado a un punto de saturación administrativa donde la gestión
+telefónica o presencial de reservas y pagos es inviable.
+
+Nuestro elemento diferenciador frente a otros gimnasios locales es la implementación
+del "Smart-Training Hub". A diferencia de una web puramente informativa, IronFlow
+ofrecerá un calculador de objetivos integrado a una tienda online. Según los resultados
+del perfil del usuario, la plataforma sugerirá actividades, suplementos específicos y
+permitirá comprarlos o reservarlos con un solo clic.
+
+Para otorgar al usuario mayor sensación de control y participación, se incluyen:
+
+   •   Calendario interactivo en tiempo real para clases dirigidas (CrossFit, HIIT, Yoga).
+   •   Venta de suplementación, ropa deportiva y bonos de entrenamiento personal.
+   •   Sistema mensual donde los socios deciden qué nuevas actividades o
+       equipamiento quieren incluir en el centro.
+   •   Un panel donde el usuario ve su progreso gráfico y recibe recomendaciones
+       personalizadas.
+
+CÓMO PUEDE UNA NUEVA WEB AYUDAR A RESOLVER PROBLEMAS
+EXISTENTES
+
+Objetivos a corto, medio y largo plazo
+
+A corto plazo, el objetivo principal de la plataforma es impulsar la digitalización
+operativa del centro deportivo para agilizar la gestión diaria y descongestionar la
+recepción. Para ello, se busca que los usuarios puedan registrarse en la web, darse de
+alta como socios, consultar tarifas y servicios, y gestionar de forma 100% online sus
+reservas de actividades. Además, se incorporará una tienda básica para la venta de
+suplementación deportiva, con el fin de ofrecer un servicio más completo y accesible
+desde una única plataforma.
+A medio plazo, la web ampliará sus funcionalidades con el objetivo de mejorar la
+experiencia del usuario, aumentar el engagement y fomentar la creación de
+comunidad. En esta fase se prevé incorporar planes de entrenamiento personalizados,
+seguimiento básico de entrenamientos, historial de reservas y compras, así como
+promociones segmentadas según el perfil o tipo de membresía del usuario. Asimismo,
+se podrán incluir herramientas de interacción directa, como encuestas de satisfacción
+para proponer nuevas actividades o servicios, e incluso un espacio interno para que los
+usuarios puedan organizar partidas de pádel entre ellos.
+
+A largo plazo, la plataforma evolucionará hacia un ecosistema digital más completo,
+automatizado e inteligente. Se integrarán pagos recurrentes, un área privada avanzada
+para clientes, estadísticas de uso, notificaciones automáticas y una posible aplicación
+móvil vinculada. Como visión final, se plantea desarrollar un sistema de fidelización
+que permita ofrecer recompensas, bonos y recomendaciones personalizadas de
+entrenamiento o suplementación en función del historial de reservas, compras y
+actividad de cada socio.
+
+CAPACIDAD PARA GENERAR CONTENIDOS
+
+Los contenidos iniciales de la web serán proporcionados por la organización y estarán
+formados principalmente por:
+
+   •   Información general del gimnasio y sus instalaciones.
+   •   Tarifas, tipos de membresía y condiciones de alta.
+   •   Horarios de actividades y disponibilidad de pistas.
+   •   Catálogo de productos de suplementación.
+   •   Imágenes, textos promocionales y datos de contacto.
+
+Una vez la web esté en funcionamiento, los nuevos contenidos serán generados
+principalmente por el personal de administración del gimnasio, que actualizará
+horarios, promociones, eventos, cambios en servicios y nuevos productos de la tienda
+online.
+
+ESTUDIO DE LA COMPETENCIA
+
+Para analizar la viabilidad del proyecto y detectar oportunidades de mejora, se han
+tomado como referencia dos competidores del ámbito deportivo en Valencia: Enjoy!
+Samaranch Valencia y Basic-Fit. Ambos representan modelos distintos de centro
+deportivo, pero resultan útiles como comparación porque ofrecen servicios
+relacionados con el fitness, las actividades deportivas y la gestión digital de usuarios.
+1. Enjoy! Samaranch Valencia
+
+Enjoy! Samaranch Valencia se presenta como un centro deportivo de oferta amplia,
+con gimnasio, piscina, pádel y tenis, además de actividades dirigidas y distintos tipos
+de abono. Su propuesta digital está bastante trabajada, ya que permite el alta online, la
+consulta de horarios y el uso de una app propia, MyEnjoy, desde la que el usuario
+puede seguir planes de entrenamiento y acceder a contenidos adicionales.
+
+Como principal fortaleza, destaca la comodidad de uso y la amplitud de servicios
+integrados en una misma plataforma. Además, ofrece una imagen moderna y una
+estructura orientada a captar usuarios desde la propia web. Sin embargo, desde el
+punto de vista de nuestro proyecto, su enfoque parece estar más centrado en la
+gestión del abono y de las actividades deportivas que en otros servicios
+complementarios, por lo que deja margen para diferenciarse con una propuesta más
+unificada que incluya también reservas, gestión de socios y venta de suplementación
+en un mismo entorno.
+
+De esta competencia resulta interesante extraer, en primer lugar, la comodidad de su
+proceso de alta online, ya que está planteado de forma clara, directa y sencilla para el
+usuario. También llama la atención la manera en la que consigue estructurar
+visualmente una oferta de servicios bastante amplia, como gimnasio, piscina o tenis,
+manteniendo una navegación ordenada y comprensible sin que la web dé sensación de
+estar recargada o saturada.
+
+Como aspecto a evitar, se aprecia un enfoque principalmente transaccional y
+unidireccional, más orientado a informar y vender que a generar relación con el
+usuario. Se echan en falta elementos que aporten una mayor sensación de comunidad,
+como encuestas de satisfacción, valoraciones, espacios de opinión o herramientas de
+participación. Precisamente, reforzar esa parte más interactiva puede ser una buena
+oportunidad para mejorar el engagement y ofrecer una experiencia más cercana.
+
+2. Basic-Fit
+
+Basic-Fit constituye otro competidor relevante para este proyecto, ya que se trata de
+una cadena de gimnasios con presencia en Valencia y en numerosas ciudades de
+España. Su modelo se caracteriza por ofrecer una experiencia muy digitalizada,
+apoyada en una app móvil desde la que los usuarios pueden gestionar distintos
+aspectos de su suscripción, acceder al gimnasio mediante sistemas digitales y
+consultar entrenamientos o clases virtuales.
+Desde el punto de vista competitivo, su principal fortaleza es la simplicidad del modelo
+de uso, la flexibilidad horaria y la facilidad de acceso para el usuario. Además, presenta
+una imagen de marca moderna, orientada a un público que busca entrenar de forma
+rápida, cómoda y sin demasiadas barreras. Esta propuesta resulta especialmente
+atractiva para usuarios que valoran la autonomía y la inmediatez en la gestión de su
+actividad deportiva.
+
+No obstante, frente a nuestro proyecto, Basic-Fit también deja espacio para la
+diferenciación. Su modelo está centrado principalmente en el gimnasio y las clases,
+mientras que nuestra propuesta pretende reunir en una sola plataforma servicios más
+amplios, como la reserva de pistas de pádel, el alta online de socios y la compra de
+suplementación deportiva. De este modo, se plantea una experiencia más completa y
+adaptada a un centro deportivo multifuncional.
+
+En este otro caso, una de las principales ideas a extraer es la extrema simplicidad de su
+interfaz. El diseño va muy al grano y presenta llamadas a la acción muy claras, lo que
+facilita que el usuario pueda completar su objetivo de forma rápida, intuitiva y sin
+apenas fricciones durante la navegación.
+
+Por otra parte, conviene evitar una despersonalización excesiva de la experiencia. Al
+tratarse de un modelo más masivo, la plataforma transmite una sensación algo fría y el
+usuario apenas tiene margen para participar activamente o sentirse parte del centro.
+Además, al no integrar servicios como la tienda dentro del mismo flujo de navegación,
+también se reducen las posibilidades de conversión cruzada y de ofrecer una
+experiencia más completa.
+
+Conclusión comparativa
+
+A partir de este análisis, se observa que los competidores actuales ya cubren algunas
+necesidades importantes, como el alta online, la gestión digital de usuarios o la oferta
+de diversos servicios deportivos. Sin embargo, también se aprecia una oportunidad
+clara para desarrollar una plataforma más completa, que no se limite únicamente a
+mostrar información o gestionar accesos, sino que actúe como un ecosistema digital
+integral del centro deportivo.
+
+En este sentido, nuestro proyecto puede diferenciarse al combinar en una sola web la
+gestión de socios, las reservas deportivas, el acceso a pistas de pádel y la compra de
+productos de suplementación, mejorando tanto la experiencia del usuario como la
+organización interna del centro.
+

@@ -1,0 +1,511 @@
+Fase 2. Definición de contenidos
+Caso de estudio: Gimnasio y centro deportivo
+Participantes: Francisco Blanco, Arnau Vila
+
+
+1. Información general sobre la organización y la web
+En esta fase se definen los contenidos que formarán parte de la web de IronFlow
+Fitness & Wellness, así como los tipos de información que deberán estar disponibles
+para los distintos perfiles de usuario. La finalidad de la plataforma es centralizar en un
+único entorno digital los principales servicios del gimnasio: información corporativa,
+alta de socios, consulta de tarifas, reservas de actividades dirigidas, alquiler de pistas
+de pádel, compra de suplementación deportiva y acceso a funcionalidades
+personalizadas.
+
+La web tendrá una doble función. Por una parte, actuará como escaparate público para
+nuevos usuarios interesados en conocer el centro, sus servicios y sus tarifas. Por otra,
+servirá como plataforma de gestión y acceso para socios, permitiendo realizar
+reservas, consultar información personalizada y participar en funcionalidades
+adicionales como encuestas o recomendaciones.
+
+Qué
+
+       Pregunta                                 Posible respuesta
+ Qué es IronFlow           Página con texto explicativo sobre el gimnasio, su filosofía y
+ Fitness & Wellness        sus servicios
+ Qué ofrece la             Página resumen con instalaciones, actividades, pistas,
+ organización              tienda y servicios complementarios
+ Qué es esta web y         Página principal con acceso a alta online, reservas, tienda,
+ qué permite hacer         contacto y zona privada
+ Qué servicios             Página específica sobre el sistema Smart-Training Hub y los
+ diferencian al centro     servicios personalizados
+
+
+
+
+                                             1
+   Quién
+
+          Pregunta                                Posible respuesta
+    Quién forma la            Página explicativa con los distintos perfiles: socios,
+    organización              entrenadores, monitores, personal de recepción y
+                              administración
+    Quién puede acceder       Explicación de que la zona privada está orientada a socios
+    a la zona privada         registrados y personal autorizado
+    Quién imparte las         Fichas de entrenadores y monitores
+    actividades dirigidas
+    Quién puede alquilar      Explicación en páginas de servicios y condiciones de
+    pistas o comprar          acceso
+    productos
+
+   Cuándo
+
+               Pregunta                              Posible respuesta
+    Cuándo se creó el gimnasio          Página con breve historia del centro
+    Cuándo se creó el sitio web         Fecha mostrada en el pie de página
+    Cuándo se celebran las              Calendario y fichas de actividades con
+    actividades                         horarios
+    Cuándo hay promociones o            Noticias o promociones publicadas en la
+    eventos                             web
+
+   Cómo
+
+         Pregunta                                   Posible respuesta
+Cómo hacerse socio                 Página de tipos de membresía, tarifas y formulario de
+                                   alta
+Cómo reservar una actividad        Sistema de reservas online desde calendario o ficha
+dirigida                           de actividad
+Cómo alquilar una pista            Formulario o sistema de reserva vinculado a la
+                                   disponibilidad
+Cómo comprar suplementación        Tienda online con carrito y proceso de compra
+o productos
+Cómo contactar con el gimnasio     Formulario de contacto, teléfono, correo electrónico
+                                   y datos del centro
+Cómo recibir información y         Formulario de suscripción al boletín o sistema de
+promociones                        avisos
+
+   Dónde
+
+              Pregunta                                 Posible respuesta
+  Dónde se ubica el centro deportivo      Dirección postal y mapa
+
+
+                                              2
+Dónde se realizan las actividades         Información en la ficha de cada actividad o
+                                          instalación
+Dónde se encuentran las pistas y          Página de instalaciones con descripción y
+zonas deportivas                          localización interna
+
+ 2. Tipos de contenido específico
+ A partir de las necesidades detectadas en la fase anterior, se han definido los tipos de
+ contenido que estructurarán la web.
+
+ 2.1. Texto general
+
+ El tipo de contenido Texto general servirá para introducir páginas informativas
+ estables, cuyo contenido no cambia con frecuencia y que forman parte de la base
+ corporativa de la web.
+
+ Se utilizará para:
+
+    •   Quiénes somos
+    •   Historia del gimnasio
+    •   Instalaciones
+    •   Tarifas y tipos de membresía
+    •   Política de uso y normas del centro
+    •   Smart-Training Hub
+    •   Contacto
+
+
+   Pregunta                    Campo                          Tipo de campo
+  Qué                 Título de la página       Texto
+                      Contenido principal       Texto largo
+                      Imagen ilustrativa        Imagen
+                      opcional
+                      Documento adjunto         Fichero
+                      opcional
+  Quién               Autor o responsable del   Información gestionada por
+                      contenido                 administración
+  Cuándo              Fecha de publicación o    Fecha
+                      creación
+                      Fecha de última           Fecha opcional
+                      actualización
+  Cómo                Forma de presentación     Página informativa de lectura directa
+                      del contenido
+  Dónde               Ubicación dentro de la    Secciones corporativas, informativas o de
+                      web                       ayuda
+
+                                                3
+2.2. Noticia o promoción
+
+Una Noticia o promoción es una unidad de información destinada a comunicar
+novedades del gimnasio, campañas de marketing, cambios de horario, nuevos
+productos, eventos especiales o promociones temporales.
+
+  Pregunta                 Campo                           Tipo de campo
+ Qué            Título de la noticia            Texto
+                Contenido de la noticia         Texto largo
+                Imagen promocional              Imagen
+                Tipo de publicación             Taxonomía: noticia, promoción, evento,
+                                                aviso
+ Quién          Emisor de la publicación        Taxonomía o referencia a usuario
+ Cuándo         Fecha de publicación            Fecha
+                Fecha de inicio de              Fecha
+                promoción o evento
+                Fecha de fin                    Fecha opcional
+ Cómo           Enlace a reserva o compra       URL opcional
+ Dónde          Ubicación del evento o          Texto opcional
+                actividad
+
+
+
+2.3. Actividad
+
+Este tipo de contenido describe cada una de las actividades deportivas ofertadas por el
+centro, como CrossFit, HIIT, Yoga, spinning o entrenamiento funcional.
+
+ Pregunta             Campo                                 Tipo de campo
+ Qué      Nombre de la actividad                 Texto
+          Descripción                            Texto largo
+          Categoría                              Taxonomía
+          Imagen                                 Imagen
+ Quién    Monitor o entrenador                   Referencia a entrenador
+          responsable
+ Cuándo   Horario                                Texto o campo de programación
+          Duración                               Número o texto
+          Días disponibles                       Texto / taxonomía
+ Cómo     Plazas máximas                         Número entero
+          Reserva online                         Enlace o referencia a sistema de
+                                                 reserva
+ Dónde       Sala o zona del centro              Texto
+
+
+
+                                            4
+2.4. Instalación deportiva
+
+El tipo de contenido Instalación deportiva estará orientado a la descripción de
+espacios reservables o consultables, especialmente las pistas, aunque también puede
+abarcar salas específicas o zonas funcionales.
+
+
+
+
+  Pregunta             Campo                      Tipo de campo
+ Qué            Nombre de la           Texto
+                instalación
+                Descripción            Texto largo
+                Tipo de instalación    Taxonomía: pista, sala, zona
+                Imagen                 Imagen
+ Quién          Responsable o          Texto opcional
+                personal asociado
+ Cuándo         Horario disponible     Texto
+ Cómo           Precio de reserva      Decimal
+                Estado de              Booleano o texto
+                disponibilidad
+                Reserva online         Enlace o referencia a sistema de
+                                       reserva
+ Dónde          Ubicación dentro del   Texto
+                centro
+
+
+
+2.5. Producto de tienda
+
+Un Producto de tienda representa cada artículo disponible a través de la web, como
+suplementación, ropa deportiva o bonos de entrenamiento personal.
+
+ Pregunta         Campo                    Tipo de campo
+ Qué      Nombre del producto          Texto
+          Descripción                  Texto largo
+          Imagen                       Imagen
+          Categoría de producto        Taxonomía
+          Marca                        Taxonomía
+ Quién    Proveedor o fabricante       Texto opcional
+ Cuándo   Fecha de alta del            Fecha
+          producto
+ Cómo     Precio                       Decimal
+          Stock                        Número entero
+          Formato o tamaño             Texto
+
+                                         5
+             Compra online               Integración con tienda
+ Dónde       Ubicación en catálogo       Taxonomía o
+                                         referencia
+
+
+
+2.6. Documento administrativo
+
+Un Documento administrativo recoge la información necesaria para procesos
+internos o de atención al cliente, como altas, bajas, cambio de membresía,
+consentimiento, normativa o formularios de incidencias.
+
+ Pregunta             Campo                Tipo de campo
+ Qué      Título del documento          Texto
+          Explicación del procedimiento Texto largo
+          Documentos adjuntos           Fichero
+                                        multivaluado
+          Formulario asociado           Webform
+ Quién    Destinatario del              Texto
+          procedimiento
+ Cuándo   Fecha límite o plazo          Fecha opcional
+ Cómo     Forma de envío o tramitación Texto
+ Dónde    Lugar de presentación o       Texto
+          gestión
+
+
+
+2.7. Entrenador o monitor
+
+Este tipo de contenido permite presentar al personal técnico del gimnasio y reforzar la
+confianza del usuario, especialmente en actividades dirigidas y entrenamientos
+personalizados.
+
+ Pregunta         Campo                Tipo de campo
+ Qué      Nombre y apellidos           Texto
+          Fotografía                   Imagen
+          Biografía profesional        Texto largo
+          Especialidad                 Taxonomía
+ Quién    Cargo o rol                  Texto
+ Cuándo   Antigüedad en el centro      Fecha opcional
+ Cómo     Email de contacto            Email opcional
+          Teléfono profesional         Texto opcional
+ Dónde    Área principal de            Texto
+          trabajo
+
+
+
+
+                                           6
+2.8. Socio
+
+El contenido Socio está vinculado al área privada de la plataforma. Incluye información
+necesaria para la gestión de usuarios registrados, reservas, historial de actividad y
+funcionalidades personalizadas. Siguiendo el planteamiento habitual de este tipo de
+modelado, se distingue entre información pública y privada para preservar los datos
+personales sensibles.
+
+       Pregunta                      Campo                       Tipo de campo
+ Qué                    Nombre de la persona                 Texto
+                        Apellidos                            Texto
+                        Fotografía de perfil                 Imagen
+                        Tipo de membresía                    Texto o taxonomía
+                        Objetivos deportivos                 Texto largo
+                        Preferencias de actividad            Taxonomía
+                                                             multivaluada
+ Quién                  Relación con entrenadores o          Referencia interna
+                        actividades
+ Cuándo                 Fecha de alta como socio             Fecha
+                        Fecha de renovación                  Fecha opcional
+ Cómo                   Teléfono de contacto                 Texto
+                        Email                                Email
+                        Método de pago o datos de            Texto
+                        facturación
+                        Historial de reservas                Referencia o listado
+                        Historial de compras                 Referencia o listado
+
+2.9. Encuesta
+
+El tipo Encuesta permitirá recoger la opinión de los socios para decidir nuevas
+actividades, equipamiento o mejoras del centro, reforzando así el componente
+participativo del proyecto.
+
+ Pregunta         Campo                 Tipo de campo
+ Qué      Título de la encuesta      Texto
+          Descripción                Texto largo
+          Preguntas                  Webform o
+                                     formulario
+ Quién       Público destinatario    Taxonomía
+ Cuándo      Fecha de inicio         Fecha
+             Fecha de cierre         Fecha
+ Cómo        Modo de                 Texto
+             participación
+ Dónde       Área privada o          Texto
+             pública
+
+                                             7
+3. Implementación en Drupal de los tipos de contenido
+Para la implementación en Drupal se propone una estructura basada en varios tipos de
+contenido, taxonomías y formularios web. Algunos procesos, como las reservas o la
+tienda online, requerirán además módulos específicos o integraciones
+complementarias, pero la base del sistema puede modelarse a partir de los siguientes
+contenidos.
+
+3.1. Texto general
+
+    Nombre del campo        Tipo de contenido      Configuración
+ Título                    Texto                   Obligatorio
+ Cuerpo                    Texto largo y           Obligatorio
+                           resumen
+ Imagen destacada          Imagen                  Opcional
+ Documentos adjuntos       Fichero                 Opcional
+ Fecha de creación y       Definido por Drupal     No visible
+ autor
+
+
+
+3.2. Noticia o promoción
+
+ Nombre del campo              Tipo de contenido         Configuración
+ Título                Texto                             Obligatorio
+ Cuerpo                Texto largo y resumen             Obligatorio
+ Imagen                Imagen                            Opcional
+ Tipo de               Término de taxonomía              Univaluado
+ publicación
+ Emisor                Referencia a usuario o            Univaluado
+                       taxonomía
+ Fecha de              Fecha                             Obligatorio
+ publicación
+ Fecha de inicio       Fecha                             Opcional
+ Fecha de fin          Fecha                             Opcional
+ URL                   URL                               Opcional
+ Ubicación             Texto                             Opcional
+
+
+
+
+                                          8
+3.3. Actividad dirigida
+
+   Nombre del        Tipo de contenido        Configuración
+     campo
+Nombre              Texto                   Obligatorio
+Descripción         Texto largo             Obligatorio
+Imagen              Imagen                  Opcional
+Categoría           Término de              Univaluado
+                    taxonomía
+Nivel               Término de              Univaluado
+                    taxonomía
+Entrenador          Referencia a nodo       Nodo tipo
+                                            entrenador
+Horario             Texto                   Obligatorio
+Duración            Entero o texto          Obligatorio
+Plazas              Entero                  Obligatorio
+Sala                Texto                   Obligatorio
+Enlace de reserva   URL                     Opcional
+
+
+
+3.4. Instalación deportiva
+
+   Nombre del        Tipo de contenido      Configuración
+      campo
+Nombre              Texto                   Obligatorio
+Descripción         Texto largo             Obligatorio
+Tipo de             Término de              Univaluado
+instalación         taxonomía
+Imagen              Imagen                  Opcional
+Horario             Texto                   Obligatorio
+Precio de reserva   Decimal                 Opcional
+Estado              Booleano o lista        Obligatorio
+Enlace de reserva   URL                     Opcional
+Ubicación           Texto                   Obligatorio
+
+
+
+
+                                        9
+3.5. Producto de tienda
+
+ Nombre del campo     Tipo de contenido   Configuración
+Nombre              Texto                 Obligatorio
+Descripción         Texto largo           Obligatorio
+Imagen              Imagen                Opcional
+Categoría           Término de            Univaluado
+                    taxonomía
+Marca               Término de            Univaluado
+                    taxonomía
+Precio              Decimal               Obligatorio
+Stock               Entero                Obligatorio
+Formato             Texto                 Opcional
+Fecha de alta       Fecha                 Automática
+Estado de           Booleano              Obligatorio
+publicación
+
+
+
+3.6. Documento administrativo
+
+  Nombre del          Tipo de                    Configuración
+     campo          contenido
+Título          Texto              Obligatorio
+Cuerpo          Texto largo y      Obligatorio
+                resumen
+Documentos      Fichero            Multivaluado
+Formulario      Campos de          Cada procedimiento tendrá su propio
+                webform            formulario
+Destinatario    Texto              Opcional
+Fecha límite    Fecha              Opcional
+Forma de        Texto              Opcional
+gestión
+
+
+
+
+                                    10
+3.7. Entrenador o monitor
+
+   Nombre del           Tipo de contenido      Configuración
+      campo
+Nombre              Texto                      Obligatorio
+Apellidos           Texto                      Obligatorio
+Fotografía          Imagen                     Opcional
+Biografía           Texto largo                Obligatorio
+Especialidad        Término de                 Multivaluado
+                    taxonomía
+Cargo               Texto                      Obligatorio
+Email               Email                      Opcional
+Teléfono            Texto                      Opcional
+Área de trabajo     Texto                      Opcional
+
+
+
+3.8. Socio
+
+  Nombre del campo              Tipo de        Configuración
+                              contenido
+Nombre                    Texto                Privado
+Apellidos                 Texto                Privado
+Fotografía                Imagen               Privado
+Tipo de membresía         Término de           Privado
+                          taxonomía
+Fecha de alta             Fecha                Privado
+Teléfono                  Texto                Privado
+Email                     Email                Privado
+Dirección                 Dirección            Privado
+Método de pago            Texto                Privado
+Objetivos deportivos      Texto largo          Privado
+Preferencias              Término de           Multivaluado
+                          taxonomía
+Historial de reservas     Referencia           Privado
+Historial de compras      Referencia           Privado
+
+
+
+
+                                          11
+3.9. Encuesta
+     Nombre del         Tipo de contenido      Configuración
+        campo
+ Título               Texto                    Obligatorio
+ Descripción          Texto largo              Obligatorio
+ Formulario           Webform                  Obligatorio
+ Público              Término de               Opcional
+ destinatario         taxonomía
+ Fecha de inicio      Fecha                    Obligatorio
+ Fecha de cierre      Fecha                    Obligatorio
+ Estado               Booleano                 Obligatorio
+
+
+
+4. Taxonomías propuestas
+Para facilitar la organización del contenido en Drupal, se propone además el uso de
+varias taxonomías:
+
+   •   Tipo de actividad: CrossFit, HIIT, Yoga, spinning, fuerza, movilidad.
+   •   Nivel de actividad: iniciación, intermedio, avanzado.
+   •   Tipo de instalación: pista de pádel, sala funcional, sala colectiva, zona de
+       musculación, etc.
+   •   Categoría de producto: suplementación, ropa deportiva, accesorios, bonos.
+   •   Marca de producto: marcas de suplementación y equipamiento.
+   •   Tipo de membresía: mensual, trimestral, anual, premium.
+   •   Especialidad del entrenador: fuerza, nutrición, entrenamiento funcional, yoga,
+       pádel.
+   •   Tipo de publicación: noticia, promoción, evento, aviso.
+
+
+
+
+                                          12
+

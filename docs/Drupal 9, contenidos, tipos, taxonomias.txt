@@ -1,0 +1,44 @@
+      1ª Parte : tipos de contenido, menús y taxonomías
+“Cuina vegà”: un sitio web de Drupal 8 de ejemplo
+Pero, en primer lugar, hay que habilitar update manager y pulsar el botón Instalar que está al final:
+Podemos añadir un nuevo módulo usando la interfaz web de Drupal:
+
+
+
+
+Sin embargo, es necesario fijarse en la compatibilidad del módulo con cada versión de Drupal para elegir el
+comando de composer correcto:
+Al realizar el comando aparecerá el módulo en la lista de módulos disponibles (tras descargar el composer
+todo el código PHP del módulo y sus dependencias).
+Es necesario en un último paso, activar el módulo y realizar la instalación a nuestro proyecto pulsando el
+botón Instalar.
+Pero para configurar el campo dirección, necesitamos configurar los campos de la dirección postal de la
+siguiente forma:
+Para lo cual necesitaremos hacer alguna cosa antes (¡continua leyendo!)
+(en el tema olivero de drupal 9.4 el formulario de los comentarios aparece antes que los comentarios)
+Introducción a las vistas
+
+        Creating listings with views
+
+
+
+
+Vista sencilla de contenidos con presentación de resúmenes
+
+
+
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal1/web/articles
+
+(miniaturas de las fotos, texto recortado a 100 palabras, etc.)
+Vista sencilla de restaurantes con presentación de campos
+
+
+
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal1/web/restaurants
+Vista sencilla de términos de taxonomía que genera un bloque
+El bloque generado por la vista se ubica en la región con la sección Estructura > Disposición de los
+bloques.
+Se puede observar la disposición de bloques para el tema olivero
+

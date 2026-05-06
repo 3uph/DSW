@@ -1,0 +1,206 @@
+     Despliegue de una box Vagrant con Drupal y sus
+                      dependencias
+El objetivo de este documento es mostrar cómo se despliega la box Vagrant para
+disponer del software Drupal usado en la asignatura Diseño de Sitios Web.
+
+La virtualización nos permite desarrollar proyectos y gestionar las dependencias de los
+mismos de manera flexible.
+
+Vagrant es un software que permite gestionar la virtualización construyendo, mediante
+scripts, una máquina virtual con todas las dependencias de nuestro proyecto (Software +
+ficheros del proyecto).
+
+Los pasos necesarios para poder usar Vagrant son:
+
+   1. Instalar Virtual Box (aunque se pueden usar otros software de virtualización
+      como Hyper-V, VMware y Docker, si ya los tenéis instalados).
+
+   2. Instalar Vagrant
+
+   3. En sistemas Windows es recomendable usar una consola con gestor de paquetes
+      como Cygwin. Esto nos permitir añadir paquetes que pueden ser
+      imprescindibles para trabajar con Vagrant, como ssh y rsync. En la instalación
+      de CygWin nos da a elegir los paquetes que queremos instalar (una vez instalado
+      si queremos cambiar los paquetes debemos volver a iniciar el proceso de
+      instalación).
+
+Una vez se ha instalado este software, para trabajar con la box desarrollada para esta
+asignatura debemos:
+
+   1. Establecer una carpeta de trabajo (DIR_PROY),
+
+   2. En esta carpeta situaremos los ficheros Vagrantfile y provision.sh facilitados.
+      También pueden ser necesarios ficheros adicionales que forman parte del
+      proyecto.
+
+   3. Iniciar una consola en esta carpeta y teclear:
+           vagrant up
+
+
+
+
+Esto descargar de los repositorios de vagrant, la caja de referencia especificada en el
+fichero Vagrantfile y aplicará la configuración, así como el provisionamiento de la caja.
+Instalará el software dependiente según el script provision.sh. Tardará unos minutos la
+primera vez, puesto que debe descargarse todo el software (en posteriores ocasiones
+tarda menos, dado que este software ya está en un repositorio local).
+Si no existe ningún problema, nos informará de la máquina está ejecutándose, y
+podemos conectarnos a dicha máquina con un terminal ejecutando el comando:
+
+
+
+vagrant ssh
+Este comando no necesita información de login y password porque vagrant gestiona
+automáticamente las credenciales.
+
+En todo caso, en el modelo de despliegue usando Vagrant se suele usar la máquina de
+manera remota, editando los ficheros mediante las herramientas del host. Si es necesario
+ejecutar algún script, o para probar alguna modificación para ver el resultado, se utiliza
+el terminal remoto (o un servicio de escritorio remoto que habría que configurar).
+
+Como se transfieren los ficheros entre el host y la máquina
+virtual generada con Vagrant
+ Vagrant trabaja usando las carpetas sincronizadas para poder acceder a ficheros que son
+exactamente una copia tanto en una carpeta del host, como en una carpeta de la máquina
+virtual (es similar al concepto de compartidas, aunque realmente no son los mismos
+ficheros, sino que están sincronizados). Se pueden usar las herramientas de desarrollo de
+vuestro equipo (editores, entornos de desarrollo, software de maquetado, navegador,
+etc..) siempre que esté configurado correctamente para trabajar sobre estas carpetas
+sincronizadas.
+
+El resultado lo veremos cuando hagamos una petición a la máquina virtual desplegada;
+por ejemplo, a través del navegador. Esta es otra característica de las máquinas
+virtuales, tienen un direccionamiento de puertos del host cuyo tráfico se dirige a puertos
+específicos de la máquina virtual .
+
+Características de la caja Vagrant proporcionada para la
+asignatura DSW
+Como podéis observar si examináis el fichero provision.sh, esta caja tiene instalado
+exactamente el mismo software que el de nuestros laboratorios. Se instala en un proceso
+desatendido.
+
+Los datos*1 sobre esta instalación son:
+
+    •   El usuario root de MariaDB tiene como clave: “Dsic.2017”
+    •   La base de datos se llama drupal1
+    •   El usuario de drupal creado en dicha base de datos se llama drupal1 y tiene
+        como clave “Dsic.2017”
+    •   Se puede acceder al servidor apache de la máquina virtual en el puerto local de
+        nuestra máquina 8100 (8101 para https). Cualquier petición dirigida a
+        localhost:8100, se redirige al puerto 80 de la máquina virtual creada (de manera
+        análoga las peticiones al 8101 se redirigen al puerto 443).
+    •   La ejecución del script PHP de instalación de drupal utiliza el nombre del sitio
+        web DSWProject
+    •   La carpeta sincronizada se encuentra en DIR_PROY y tiene dos subcarpetas
+        DIR_PROY/html y DIR_PROY/mysql.
+
+
+1
+ Se pueden cambiar fácilmente estos datos por otros sustituyéndolos en el fichero de provisionamiento
+provision.sh. Sólo tendrá efecto en la primera ejecución de vagrant up, evidentemente.
+Para trabajar con esta máquina hay que completar el proceso de instalación de vagrant.
+Conectándose a la página
+
+http://localhost:8100/DSWProject/web/
+
+Para posteriormente trabajar con esta máquina si es necesario ejecutar algún script se
+puede usar el comando:
+
+
+
+vagrant ssh
+
+
+
+
+Es importante situarse en la carpeta adecuada dentro de esta sesión SSH para ejecutar
+los comandos script (e,g, con el composer). Además, dado que Vagrant usa una cuenta
+de root alternativa (un usuario vagrant), en muchas ocasiones es necesario usar ‘sudo’.
+Como por ejemplo en:
+
+
+sudo /usr/local/bin/composer require “drupal/address ~1.0”
+
+
+
+
+Ventajas e inconvenientes de trabajar con Vagrant
+
+Ventajas;
+
+   -   Se utilizan las herramientas que te resultan más cómodas, dado que el host puede
+       tener cualquier plataforma y software. Tampoco es necesario que el desarrollador
+       instale software en su equipo, pudiendo acceder a proyectos con características muy
+       distintas sin tener una gran cantidad de aplicaciones instaladas.
+   -   Se pueden usar repositorios, sistemas de gestión de versiones, duplicar máquinas para
+       probar cambios con gran facilidad.
+   -   Para todos los desarrolladores se reproduce el mismo entorno de desarrollo (si se
+       especifican claramente las versiones), dado que se escoge exactamente la base y las
+       dependencias del software.
+   -   Permite organizarse mejor, separando aquellos ficheros importantes, porque forman
+       parte del desarrollo, de otros que se pueden obtener de las dependencias del
+       software.
+
+Desventajas:
+
+   -   Se pueden producir problemas debido a errores del software, o a no entender la
+       dinámica de trabajo que favorece este software.
+    -   Si el host funciona con un sistema Windows es posible que se produzcan errores si en
+        las carpetas sincronizadas se utilizan symlinks (enlaces). Debe asegurarse de que en
+        Windows se usa la cuenta del administrador. Aún así se producen errores debido a las
+        diferencias entre sistemas (nombres/rutas demasiado largas, etc.). En mi experiencia
+        da menos problemas cuando el host es MacOs o Linux.
+
+Como gestionar una máquina en funcionamiento
+Se para con un shutdown now desde una sesión ssh, o usando vagrant halt.
+
+Se puede volver a poner en marcha con vagrant up
+
+Se puede determinar su estado con vagrant status
+
+Se puede pausar (como cualquier otra máquina virtual) con vagrant suspend, y volver a
+poner en funcionamiento con vagrant resume
+
+Si se apaga la máquina host sin detener primero la máquina virtual puede producirse un
+estado incoherente del sistema de ficheros. Si quisiéramos poner en marcha una máquina
+detenida abruptamente, podemos: primero hacer una copia de seguridad de los datos y
+después hacer un vagrant up, y cruzar los dedos. Si no funcionara, deberíamos de trabar
+con la copia y tratar de restaurarla en una máquina nueva, como explica el siguiente apartado.
+
+Se puede utilizar la interfaz de VirtualBox para ver las máquinas creadas y su estado. Aunque
+se puede cambiar la configuración eso afectaría a esa máquina virtual creada, la generación de
+una nueva usando vagrant no tendrá esos cambios.
+
+Otra opción es usar los comandos de VirtualBox. Vboxmanage nos permite hacer lo mismo
+que con la interfaz gráfica, pero con comandos. Por ejemplo, el siguiente comando lista todas
+las máquinas virtuales en cualquier estado (incluidas las que no están creadas por vagrant).
+Vboxmanage list vms
+
+el siguiente comando lista todas las que estén funcionado:
+Vboxmanage list runningvms
+
+
+
+Trabajar con copias de seguridad
+Una vez detenemos la máquina virtual creada para esta asignatura, tenemos los ficheros de
+drupal y su base de datos en la carpeta compartida del host. Las carpetas anteriormente
+mencionadas:
+
+DIR_PROY/html
+
+DIR_PROY/mysql
+
+Contienen respectivamente el sitio web y la base de datos del proyecto de drupal.
+
+Referencias
+    -   Introducción básica a Vagrant
+
+https://albertoromeu.com/guia-rapida-vagrant/
+   -   Curso de Vagrant
+
+https://geekytheory.com/curso/vagrant
+
+   -   Ejemplo de uso de vagrant
+
+https://canigo.ctti.gencat.cat/canigo/entorn-desenvolupament/
+

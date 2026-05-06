@@ -1,0 +1,650 @@
+                 Fase 3.
+
+   Organización de contenidos y
+    herramienas de navegación
+
+Caso de estudio: IronFlow Fitness &
+            Wellness
+
+
+
+
+          Francisco Blanco, Arnau Vila
+
+                                         1
+                                                 Índice
+1.    Estudio de card-sorting ................................................................................. 2
+2.    Tarjetas ........................................................................................................ 3
+3.    Agrupación prevista de las tarjetas ................................................................. 5
+4.    Agrupación de los contenidos ........................................................................ 5
+5.    IronFlow ....................................................................................................... 6
+6.    Entrena ........................................................................................................ 7
+7.    Reserva ........................................................................................................ 8
+8.    Tienda .......................................................................................................... 8
+9.    Área privada ................................................................................................. 9
+10. Noticias y promociones ............................................................................... 10
+11. Ayuda e información legal............................................................................ 10
+12. Herramientas de navegación ....................................................................... 11
+13. Menú principal............................................................................................ 11
+14. Paneles de página de inicio.......................................................................... 12
+15. Calendario de reservas................................................................................ 12
+16. Filtros de tienda .......................................................................................... 13
+17. Panel del socio ........................................................................................... 13
+18. Pie de página .............................................................................................. 14
+19. Implementación en Drupal .......................................................................... 14
+20. Conclusión ................................................................................................. 15
+
+
+
+
+                                                                                                                       2
+   1. Estudio de card-sorting
+Para definir la organización de los contenidos de la web de IronFlow Fitness & Wellness
+se plantea el uso de la técnica de card-sorting como apoyo al diseño de la arquitectura
+de información. Esta técnica consiste en transformar los principales contenidos y
+funcionalidades del sitio web en tarjetas y agruparlas según criterios de relación, utilidad
+y facilidad de localización para el usuario.
+
+En este proyecto no se ha realizado una prueba formal de card-sorting con usuarios
+externos. Por este motivo, el estudio se presenta como una propuesta exploratoria
+basada en los contenidos definidos en la fase anterior, en los objetivos del proyecto y en
+los perfiles de usuario previstos para la plataforma: socios actuales, nuevos usuarios
+interesados en apuntarse, personas que desean reservar instalaciones, clientes de la
+tienda online y personal de administración del gimnasio.
+
+El objetivo de este planteamiento no es obtener resultados estadísticos, sino justificar
+una primera organización lógica de los contenidos. Esta propuesta podrá validarse más
+adelante mediante pruebas con usuarios reales, encuestas o sesiones de card-sorting
+abiertas.
+
+La web propuesta incluye información corporativa, actividades dirigidas, reservas,
+alquiler de pistas, tienda online, noticias, promociones, documentos administrativos y
+una zona privada para socios. Por este motivo, es importante que la estructura de
+navegación no dependa únicamente de un menú general, sino que permita acceder de
+forma rápida a las acciones más habituales.
+
+
+
+   2. Tarjetas
+Para realizar esta propuesta de card-sorting se han seleccionado tarjetas
+representativas de los contenidos y funcionalidades principales de la web. No se han
+incluido todos los posibles contenidos del sitio, ya que esto habría generado una
+cantidad excesiva de tarjetas. En su lugar, se han escogido aquellas que representan las
+áreas más importantes del proyecto: información del gimnasio, actividades, reservas,
+tienda, área privada, noticias y gestiones administrativas.
+
+
+
+
+                                                                                          3
+El listado de tarjetas utilizado es el siguiente:
+
+       •   Qué es IronFlow Fitness & Wellness
+       •   Historia del gimnasio
+       •   Instalaciones del centro
+       •   Tarifas y tipos de membresía
+       •   Alta online como socio
+       •   Contacto
+       •   Ubicación y mapa
+       •   Normas del centro
+       •   Política de privacidad
+       •   Actividades dirigidas
+       •   CrossFit
+       •   HIIT
+       •   Yoga
+       •   Spinning
+       •   Entrenamiento funcional
+       •   Calendario de actividades
+       •   Reserva de clase
+       •   Alquiler de pista de pádel
+       •   Disponibilidad de pistas
+       •   Entrenadores y monitores
+       •   Tienda de suplementación
+       •   Ropa deportiva
+       •   Bonos de entrenamiento personal
+       •   Carrito de compra
+       •   Noticias del gimnasio
+       •   Promociones
+       •   Eventos especiales
+       •   Encuestas para socios
+       •   Smart-Training Hub
+       •   Recomendaciones personalizadas
+       •   Panel del socio
+       •   Historial de reservas
+       •   Historial de compras
+       •   Solicitar cambio de membresía
+       •   Documentos administrativos
+       •   Acceso a la zona privada
+       •   Recuperar contraseña
+
+
+                                                    4
+El número de personas encuestadas ha sido bajo (5 personas) y sería necesario un
+estudio más amplio para poder considerar que responde totalmente a las preferencias
+de la población general. No obstante, a partir de los resultados obtenidos en el
+dendrograma (método BMM), podemos extraer las siguientes conclusiones:
+
+Bloque de transacciones claro: Hay un conjunto de tarjetas relativas a la compra online
+(Tienda de suplementación, Ropa deportiva, Carrito de compra) que están
+mayoritariamente agrupadas en un bloque separado del resto de los contenidos
+técnicos. Esto valida nuestra decisión de crear una sección independiente para la
+Tienda.
+
+Consistencia en las reservas: La información sobre actividades y gestión de espacios
+(Calendario, Reserva de clase, Alquiler de pista de pádel) se agrupa de forma muy
+nítida. Esto refleja que el usuario asocia estas acciones como una unidad funcional,
+justificando la sección de Reserva en el menú principal.
+
+Contenidos corporativos y confianza: La información sobre la filosofía del gimnasio, las
+instalaciones y el personal (Qué es IronFlow, Instalaciones, Entrenadores) aparece
+agrupada de forma independiente, pero próxima a los datos de contacto y ubicación.
+
+Independencia del alta: El acceso al formulario de "Alta online como socio" no se ha
+agrupado estrechamente con la información general, lo que se interpreta como una
+invitación a distinguir este enlace de forma independiente y destacada en la cabecera
+(CTA).
+
+Noticias y actualidad: Las tarjetas de noticias y promociones no se han mezclado con
+los servicios fijos del gimnasio, lo que nos invita a formar un grupo de Noticias y
+
+
+
+                                                                                        5
+promociones desvinculado de las secciones operativas para facilitar la comunicación
+de novedades.
+
+
+
+Dispersión del Smart-Training Hub: La tarjeta de "Smart-Training Hub" ha mostrado
+cierta desvinculación o ambigüedad según el perfil del usuario, siendo asociada en
+ocasiones al área privada y en otras a la informativa. Se entiende que, al ser un
+concepto nuevo, requiere un refuerzo de navegación mediante enlaces relacionales
+desde distintas secciones del sitio.
+
+   3. Agrupación prevista de las tarjetas
+A partir de las tarjetas seleccionadas y del análisis de los contenidos definidos en la fase
+anterior, se propone una agrupación inicial de la información. Esta agrupación no
+procede de una prueba formal con usuarios, sino de una clasificación razonada según
+las principales tareas que se espera que realicen los visitantes de la web.
+
+En primer lugar, se agrupan los contenidos relacionados con la información general del
+gimnasio. Tarjetas como “Qué es IronFlow Fitness & Wellness”, “Historia del gimnasio”,
+“Instalaciones del centro”, “Tarifas y tipos de membresía”, “Ubicación y mapa” y
+“Contacto” se consideran parte de una misma categoría informativa. Esta agrupación
+responde a la necesidad de que los nuevos usuarios puedan conocer el centro antes de
+registrarse o contratar un servicio.
+
+En segundo lugar, se agrupan los contenidos relacionados con la actividad deportiva.
+Tarjetas como “Actividades dirigidas”, “CrossFit”, “HIIT”, “Yoga”, “Spinning”,
+“Entrenamiento funcional” y “Entrenadores y monitores” forman parte de una misma
+área, ya que todas ellas ayudan al usuario a conocer qué puede practicar en el centro y
+quién imparte cada actividad.
+
+También se propone una agrupación específica para las reservas. Aunque las reservas
+están relacionadas con actividades e instalaciones, responden a una acción concreta y
+frecuente del usuario. Por este motivo, tarjetas como “Calendario de actividades”,
+“Reserva de clase”, “Alquiler de pista de pádel” y “Disponibilidad de pistas” se agrupan
+en una sección propia.
+
+Los contenidos relacionados con la compra online se agrupan en una sección de tienda.
+En ella se incluyen tarjetas como “Tienda de suplementación”, “Ropa deportiva”,
+“Bonos de entrenamiento personal” y “Carrito de compra”. Esta agrupación permite
+separar claramente los contenidos informativos de los contenidos transaccionales.
+
+Por otra parte, las tarjetas vinculadas al usuario registrado se agrupan dentro del área
+privada. En esta categoría se incluyen “Acceso a la zona privada”, “Panel del socio”,
+“Historial de reservas”, “Historial de compras”, “Encuestas para socios” y
+
+                                                                                          6
+“Recomendaciones personalizadas”. Esta separación permite diferenciar la navegación
+pública de la navegación personalizada.
+
+Finalmente, las noticias, promociones y eventos se agrupan como contenidos de
+actualidad. Aunque pueden estar relacionados con otras secciones, se considera
+conveniente mantenerlos en un bloque propio para facilitar la comunicación de
+novedades del gimnasio.
+
+
+
+   4. Agrupación de los contenidos
+A la vista de la propuesta de card-sorting y teniendo en cuenta los contenidos definidos
+en las fases anteriores del proyecto, se propone una estructura organizada en varios
+grupos principales. Esta estructura pretende facilitar que cada usuario encuentre
+rápidamente la información o funcionalidad que necesita, diferenciando entre
+contenidos informativos, acciones de reserva, compra online y acceso privado.
+
+La estructura propuesta no debe entenderse como cerrada o definitiva. La web de
+IronFlow Fitness & Wellness podrá incorporar nuevos contenidos con el tiempo, como
+nuevas actividades, promociones, productos, documentos administrativos o
+funcionalidades para socios. Por este motivo, la organización de contenidos debe ser
+flexible y permitir futuras ampliaciones sin romper la lógica general de navegación.
+
+Para garantizar una experiencia de usuario óptima, se han diseñado secuencias de
+navegación fluidas basadas en las tareas principales. Por ejemplo, en el proceso de
+reserva, el usuario sigue un camino lógico que comienza en la ficha técnica de la
+'Actividad', continúa visualizando la disponibilidad en el 'Calendario' y finaliza con el
+envío del formulario de 'Confirmación'. Del mismo modo, el flujo de compra se inicia en
+el catálogo de la 'Tienda', pasa por la revisión del 'Carrito' y concluye en la pasarela de
+pago
+
+Los grupos principales propuestos son los siguientes:
+
+       •   IronFlow
+       •   Entrena
+       •   Reserva
+       •   Tienda
+       •   Área privada
+       •   Noticias y promociones
+       •   Ayuda e información legal
+
+
+
+
+                                                                                         7
+   5. IronFlow
+Este grupo recoge la información corporativa y general del centro deportivo. Está
+orientado principalmente a nuevos usuarios o visitantes que quieren conocer el
+gimnasio antes de registrarse, aunque también puede ser útil para socios actuales que
+necesiten consultar información básica.
+
+
+
+Contenidos incluidos:
+
+      •   Qué es IronFlow Fitness & Wellness
+      •   Historia del gimnasio
+      •   Instalaciones
+      •   Tarifas y tipos de membresía
+      •   Smart-Training Hub
+      •   Ubicación y mapa
+      •   Contacto
+      •   Normas generales del centro
+
+
+
+Esta sección funcionará como presentación principal del gimnasio y deberá transmitir
+de forma clara qué ofrece el centro, qué servicios lo diferencian y cómo puede
+contactar el usuario o iniciar el proceso de alta.
+
+
+
+   6. Entrena
+El grupo Entrena reúne los contenidos relacionados con la oferta deportiva del centro.
+Su finalidad es que el usuario pueda consultar las actividades disponibles, conocer su
+nivel de dificultad, revisar la descripción de cada actividad y ver qué monitor o
+entrenador la imparte.
+
+
+
+Contenidos incluidos:
+
+      •   Actividades dirigidas
+      •   CrossFit
+      •   HIIT
+      •   Yoga
+      •   Spinning
+      •   Entrenamiento funcional
+      •   Entrenadores y monitores
+
+                                                                                         8
+      •   Niveles de actividad
+      •   Recomendaciones de entrenamiento
+
+
+
+Esta sección estará especialmente relacionada con el calendario de actividades y con
+el sistema de reservas, ya que desde la ficha de cada actividad el usuario podrá
+acceder a los horarios disponibles y realizar una reserva si está autenticado.
+
+
+
+   7. Reserva
+El grupo Reserva agrupa las funcionalidades relacionadas con la planificación y
+contratación de servicios deportivos. Aunque algunos de estos contenidos están
+vinculados a actividades o instalaciones, se considera necesario separarlos porque
+responden a una acción concreta del usuario: reservar una clase o alquilar una pista.
+
+
+
+Contenidos incluidos:
+
+      •   Calendario de actividades
+      •   Reserva de clases
+      •   Alquiler de pistas de pádel
+      •   Disponibilidad de pistas
+      •   Horarios
+      •   Normas de reserva
+      •   Confirmación o cancelación de reservas
+
+
+
+Esta sección debe ser una de las más visibles de la web, ya que muchos socios
+accederán al sitio con un objetivo concreto y rápido: comprobar horarios, consultar
+disponibilidad o reservar.
+
+
+
+
+                                                                                        9
+   8. Tienda
+El grupo Tienda contiene los productos y servicios que pueden comprarse desde la
+web. Esta sección permite ampliar los servicios del gimnasio mediante la venta de
+suplementación deportiva, ropa, accesorios y bonos de entrenamiento.
+
+Contenidos incluidos:
+
+   •   Suplementación deportiva
+   •   Ropa deportiva
+   •   Accesorios
+   •   Bonos de entrenamiento personal
+   •   Ficha de producto
+   •   Carrito de compra
+   •   Proceso de compra
+   •   Condiciones de compra
+
+Esta sección deberá estar organizada mediante categorías para que el usuario pueda
+encontrar fácilmente los productos. Además, algunos productos podrán estar
+relacionados con recomendaciones del Smart-Training Hub o con los objetivos
+deportivos del socio.
+
+
+
+   9. Área privada
+El área privada recoge los contenidos y funcionalidades destinados a los socios
+registrados. Esta sección no estará disponible para usuarios anónimos y servirá como
+espacio personal para consultar información propia del usuario.
+
+Contenidos incluidos:
+
+   •   Acceso de socios
+   •   Panel del socio
+   •   Historial de reservas
+   •   Historial de compras
+   •   Objetivos deportivos
+   •   Preferencias de actividad
+   •   Encuestas para socios
+   •   Recomendaciones personalizadas
+   •   Gestión de datos personales
+   •   Recuperación de contraseña
+
+                                                                                     10
+Esta sección permite diferenciar la navegación pública de la navegación privada. Los
+datos personales, las reservas, las compras y las recomendaciones individualizadas
+solo serán accesibles para el usuario autenticado.
+
+
+
+
+   10.       Noticias y promociones
+Este grupo recoge los contenidos de actualidad del gimnasio. Su función principal es
+comunicar novedades, promociones, eventos, cambios de horario, nuevas actividades
+o nuevos productos disponibles en la tienda.
+
+Contenidos incluidos:
+
+   •   Noticias del gimnasio
+   •   Promociones temporales
+   •   Eventos especiales
+   •   Nuevas actividades
+   •   Cambios de horario
+   •   Nuevos productos
+   •   Avisos para socios
+
+Las noticias podrán ser públicas o privadas. Las noticias públicas estarán visibles para
+cualquier visitante, mientras que algunos avisos internos o promociones concretas
+podrán mostrarse únicamente a socios registrados.
+
+
+
+   11.       Ayuda e información legal
+Este grupo incluye los contenidos de soporte, contacto, documentación administrativa
+e información legal. Aunque algunos de estos contenidos pueden estar enlazados
+desde otras secciones, se considera útil agruparlos también en un bloque propio.
+
+Contenidos incluidos:
+
+   •   Contacto
+   •   Preguntas frecuentes
+   •   Documentos administrativos
+   •   Alta, baja o cambio de membresía
+   •   Normas del centro
+   •   Política de privacidad
+   •   Condiciones de compra
+
+                                                                                       11
+   •   Aviso legal
+
+Algunos contenidos podrán aparecer en más de una sección. Por ejemplo, las
+condiciones de compra podrán estar en la tienda y también en el pie de página. Del
+mismo modo, los documentos administrativos podrán estar disponibles desde el área
+privada y desde la sección de ayuda.
+
+
+
+   12.        Herramientas de navegación
+Una vez definidos los grupos principales de contenido, se proponen varias
+herramientas de navegación para facilitar el acceso a la información. La web de
+IronFlow Fitness & Wellness no debe basarse únicamente en un menú superior, ya que
+los usuarios pueden entrar con objetivos diferentes: conocer el gimnasio, apuntarse,
+reservar una clase, alquilar una pista, comprar productos o consultar su área privada.
+
+Por este motivo, se propone combinar varias herramientas sencillas de navegación:
+menú principal, paneles en la página de inicio, calendario de reservas, filtros de tienda,
+panel del socio y pie de página.
+
+Para enriquecer la experiencia de usuario y facilitar el descubrimiento de contenidos,
+se implementarán enlaces relacionales que conecten diferentes tipos de información
+de forma automática:
+
+   •   Fichas de Entrenadores: Los perfiles de los monitores no serán páginas
+       aisladas. Cada ficha incluirá un bloque lateral dinámico denominado "Clases
+       que imparte", con enlaces directos a los nodos de tipo 'Actividad'. Esto permite
+       que el usuario pase de conocer al profesional a reservar su clase en un solo clic.
+   •   Noticias y Promociones: Las noticias sobre nuevas campañas, eventos o
+       productos incluirán enlaces relacionales destacados hacia el formulario de
+       'Alta de socio' o hacia la ficha específica en la 'Tienda'. El objetivo es que
+       cualquier contenido de actualidad sirva como puente directo hacia la
+       conversión operativa.
+   •   Actividades e Instalaciones: Desde la descripción de una actividad (ej. Yoga),
+       existirá un enlace relacional que apunte directamente a la 'Instalación' (ej. Sala
+       1) donde se imparte, y viceversa, permitiendo una navegación circular por todo
+       el ecosistema del centro.
+
+
+
+
+                                                                                       12
+   13.        Menú principal
+El menú principal estará visible en todas las páginas de la web y permitirá acceder a las
+secciones más importantes del sitio.
+
+Se propone el siguiente menú:
+
+   •   Inicio
+   •   IronFlow
+   •   Entrena
+   •   Reserva
+   •   Tienda
+   •   Noticias
+   •   Contacto
+
+Además, en una zona destacada de la cabecera se incluirán los accesos a:
+
+   •   Área privada
+   •   Hazte socio
+
+De esta forma, los visitantes podrán navegar por la información pública del gimnasio y
+los socios tendrán un acceso rápido a su zona personal.
+
+
+
+
+   14.        Paneles de página de inicio
+La página principal mostrará varios paneles destacados para acceder rápidamente a
+las partes más importantes de la web. Estos paneles ayudarán al usuario a encontrar
+las acciones principales sin tener que buscar demasiado en el menú.
+
+Los paneles principales propuestos son:
+
+   •   Entrena
+   •   Reserva
+   •   Tienda
+   •   Área privada
+
+Cada panel incluirá un título, una breve descripción y varios enlaces destacados. Por
+ejemplo, el panel de Reserva podrá incluir accesos al calendario de actividades,
+reserva de clases y alquiler de pistas. El panel de Tienda podrá incluir accesos a
+suplementación, ropa deportiva y bonos.
+
+
+                                                                                        13
+También se podrán incluir botones destacados como:
+
+   •   Hazte socio
+   •   Ver tarifas
+   •   Reservar clase
+   •   Alquilar pista
+   •   Comprar suplementación
+
+
+   15.        Calendario de reservas
+El calendario de reservas permitirá consultar las clases dirigidas y los horarios
+disponibles. Será una de las herramientas más importantes de la web, ya que muchos
+socios accederán con el objetivo de reservar rápidamente.
+
+El calendario podrá mostrar:
+
+   •   Nombre de la actividad
+   •   Día y hora
+   •   Duración
+   •   Sala o zona del centro
+   •   Monitor responsable
+   •   Plazas disponibles
+   •   Enlace para reservar
+
+Esta herramienta estará disponible desde la sección Reserva y también podrá estar
+enlazada desde las fichas de las actividades. De este modo, un usuario que esté
+consultando una actividad podrá ver directamente cuándo se realiza y reservar una
+plaza.
+
+
+
+   16.        Filtros de tienda
+La tienda online contará con filtros para facilitar la búsqueda de productos. Esto será
+útil porque la sección puede incluir productos de diferentes tipos, como
+suplementación, ropa, accesorios o bonos.
+
+Se proponen los siguientes filtros:
+
+   •   Categoría de producto
+   •   Marca
+   •   Precio
+
+                                                                                          14
+   •   Disponibilidad
+   •   Tipo de producto
+
+Con estos filtros, el usuario podrá encontrar de forma más rápida el producto que
+busca. Además, cada producto tendrá una ficha con su nombre, descripción, imagen,
+precio, stock y opción de compra.
+
+
+
+   17.        Panel del socio
+El panel del socio será la página principal dentro del área privada. Desde este espacio,
+el usuario registrado podrá consultar su información y acceder a sus funcionalidades
+personales.
+
+El panel del socio podrá incluir:
+
+   •   Mis reservas
+   •   Historial de reservas
+   •   Historial de compras
+   •   Mis objetivos deportivos
+   •   Recomendaciones personalizadas
+   •   Encuestas disponibles
+   •   Datos personales
+   •   Tipo de membresía
+
+Esta herramienta permitirá que el socio tenga toda su información agrupada en un
+único espacio. Además, podrá mostrar avisos personalizados, como próximas
+reservas, promociones o encuestas pendientes.
+
+
+
+   18.        Pie de página
+El pie de página estará presente en todas las páginas de la web y recogerá enlaces
+secundarios, legales y de contacto.
+
+El pie de página podrá incluir:
+
+   •   Contacto
+   •   Ubicación
+   •   Teléfono
+   •   Correo electrónico
+
+                                                                                      15
+   •   Política de privacidad
+   •   Aviso legal
+   •   Condiciones de compra
+   •   Normas del centro
+   •   Preguntas frecuentes
+   •   Redes sociales
+
+Estos enlaces no necesitan estar en la parte principal de la web, pero deben ser fáciles
+de encontrar desde cualquier página.
+
+
+
+   19.        Implementación en Drupal
+Para implementar esta organización en Drupal se utilizarán herramientas básicas del
+gestor de contenidos, como menús, bloques, vistas, taxonomías, filtros y permisos de
+usuario.
+
+El menú principal y el pie de página se implementarán mediante el sistema de menús
+de Drupal. Los paneles de la página principal se podrán crear mediante bloques
+personalizados o mediante una página básica con enlaces destacados a las secciones
+principales.
+
+Las noticias, actividades y productos se podrán mostrar mediante vistas. Estas vistas
+permitirán ordenar los contenidos por fecha, categoría, tipo de actividad o producto.
+En el caso de la tienda y del calendario de reservas, se podrán añadir filtros expuestos
+para que el usuario pueda buscar con mayor facilidad.
+
+Las categorías de productos, tipos de actividad, niveles, marcas o tipos de publicación
+se gestionarán mediante taxonomías. Esto permitirá mantener los contenidos
+ordenados y facilitará la navegación por la web.
+
+El área privada se implementará mediante roles y permisos. Los usuarios anónimos
+podrán acceder a la información pública, mientras que los socios registrados podrán
+consultar su panel privado, reservas, compras, encuestas y recomendaciones.
+
+Los enlaces relacionados entre contenidos se podrán implementar mediante campos
+de referencia. Por ejemplo, una actividad podrá estar relacionada con un entrenador,
+una instalación o productos recomendados de la tienda.
+
+
+
+
+                                                                                       16
+   20.        Conclusión
+La organización propuesta permite estructurar la web de IronFlow Fitness & Wellness
+de forma clara y sencilla. Los contenidos se agrupan en secciones principales como
+IronFlow, Entrena, Reserva, Tienda, Área privada, Noticias y promociones, y Ayuda e
+información legal.
+
+Esta estructura facilita que cada tipo de usuario encuentre lo que necesita: un nuevo
+visitante podrá consultar tarifas e información del gimnasio, un socio podrá reservar
+clases o acceder a su panel privado, y un cliente podrá comprar productos en la tienda
+online.
+
+Las herramientas de navegación propuestas, como el menú principal, los paneles de
+inicio, el calendario de reservas, los filtros de tienda y el panel del socio, permiten que
+la web sea fácil de usar y pueda crecer en el futuro con nuevos contenidos o
+funcionalidades.
+
+
+
+
+                                                                                          17
+

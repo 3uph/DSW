@@ -1,0 +1,366 @@
+        2ª Parte: vistas avanzadas y
+          bloques personalizados
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal2/web
+
+Formularios de búsqueda realizados con vistas y filtros expuestos
+
+
+Las vistas permiten crear formularios de búsqueda para los usuarios, mostrando controles de
+filtrado. Utilizaremos como ejemplo la vista de Restaurantes de la práctica anterior:
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal2/web/restaurants
+
+Para hacer visibles estos filtros tenemos que introducir dos items nuevos en la sección de
+filtros de la vista:
+
+       Rango de precios (field_rango_ de_precios)
+       Direccion (field_direccion:locality)
+
+Selecciona "muestra el filtro a los visitantes" y configura el resto de opciones para los dos
+filtros. Por ejemplo:
+Configurar la vista que muestra los resultados de los términos de la
+taxonomía
+
+
+Drupal viene con una gran cantidad de vistas predefinidas que se utilizan para la interfaz de la
+administración y para los comportamientos por defecto. Esto se puede encontrar en Estructura
+> Vistas :
+Una de las vistas interesantes es "Término de taxonomía", que es la que define como se
+muestran los resultados la página de un término de taxonomía, que contiene una lista de
+contenidos que están marcados con este término de taxonomía. Por defecto, está configurada
+para mostrar los contenidos en modo de visualización "Resumen":
+
+
+
+
+Un ejemplo de ejecución de esta vista es:
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal2/web/taxonomy/term/2
+
+Observa la URL anterior.El sufijo es "/taxonomy/term/2". Si examinas la vista, verás que está
+configurada para una ruta (path) "taxonomy/term/%". El signo % significa que la vista es
+contextual y que coge un parámetro de la URL Es válida, por tanto, para todos los términos de
+todas las taxonomías. Si modificamos esta vista afectará a todas las páginas de todos los
+términos de taxonomía.
+
+Ahora deseamos que la lista de resultados de los "tipos de cocina" y únicamente los términos
+de ese tipo se muestren de una forma diferente. Queremos, por ejemplo, que:
+
+       sólo se muestren contenidos que sean recetas de cocina, y
+       que se muestren como una rejilla (grid) de miniaturas de las fotos de las recetas con el
+        título enlazado.
+
+Para realizar esto, en primer lugar, tendremos que duplicar la vista de términos de taxonomía
+en Estructura > Vistas y le pondremos el nombre "Término de taxonomía Tipo de cocina":
+Edita la vista para que esté configurada como hemos descrito anteriormente:
+
+
+
+
+Con el objetivo de hacer que esta vista se aplique a la taxonomía Tipos de cocina (cosa que
+todavía no pasa) tenemos que instalar el módulo Taxonomy View Integrator usando el
+comando:
+
+# composer require 'drupal/tvi'
+
+en el directorio de instalación del sitio web de Drupal.
+
+Una vez instalado y activado el módulo, podemos editar la configuración del a taxonomía
+"Tipos de cocina" y configurar la nueva vista como la forma de presentación de los términos de
+la taxonomía:
+Y con esto ya deberíamos tener el resultado esperado:
+
+
+
+
+Vistas con facetas
+
+
+Las facetas o "navegación facetada" o "búsqueda facetada" son una herramienta de
+navegación que permite filtrar unos resultados en función de diferentes aspectos o "facetas".
+Se puede leer más aquí: https://es.wikipedia.org/wiki/Búsqueda_por_facetas
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal2/web/receptes
+Las facetas son un sistema aparentemente sencillo, para el usuario, pero técnicamente son
+complejos. Es necesaria una gestión especial de las bases de datos que no todos los sistemas
+tienen.
+
+Para la instalación en Drupal necesitamos dos módulos: Search API y Facets. El módulo Search
+API permite una gestión avanzada de la base de datos para búsquedas, y el módulo Facets
+proporciona el sistema de facetas.
+
+En primer lugar, utilizaremos composer para instalar los módulos en el directorio de sitio
+Drupal:
+
+# composer require ' drupal/search_api'
+
+# composer require 'drupal/facets'
+
+Para poder usar el widget "range slider" que hemos usado para el tiempo de elaboración (ver
+captura de la pantalla anterior) , debemos instalar unas librerías adicionales:
+
+Tenemos que insertar las líneas marcadas en rojo en el fichero composer.json que está en el
+directorio del sitio web:
+
+"repositories": [
+       {
+
+               "type": "composer",
+
+               "url": "https://packages.drupal.org/8"
+
+       },
+
+       {
+
+               "type": "composer",
+
+               "url": "https://asset-packagist.org"
+
+       }
+
+],
+
+Se debe ejecutar el siguiente comando:
+
+# composer require oomphinc/composer-installers-extender
+
+Ahora se debe volver a modificar el fichero composer.json conforme indican las líneas en rojo:
+
+"extra": {
+
+       "composer-exit-on-patch-failure": true,
+
+       "patchLevel": {
+
+       "drupal/core": "-p2"
+
+       },
+
+       "installer-types": ["npm-asset", "bower-asset"],
+
+       "installer-paths": {
+
+               "web/core": ["type:drupal-core"],
+
+               "web/libraries/{$name}": ["type:drupal-library",
+
+               "type:npm-asset", "type:bower-asset"],
+
+               "web/modules/contrib/{$name}": ["type:drupal-
+
+module"],
+
+               "web/profiles/contrib/{$name}": ["type:drupal-
+
+profile"],
+
+se debe entonces ejecutar el comando:
+
+# composer require 'bower-asset/jquery-ui-slider-pips:^1.11'
+Después se debe activar los módulos en el menú Amplia:
+
+
+
+
+Si acudimos a Informes > Informe del estado no se debería observar ningún mensaje de error
+relacionado con las librerías.
+
+Ahora tenemos que configurar la base de datos de búsqueda en la página de configuración de
+Search API.
+
+
+
+
+En primer lugar, debemos añadir el servidor:
+A continuación, tenemos que añadir un índice. En este ejemplo crearemos un índice específico
+para recetas de cocina:
+Ahora, deseamos crear en el índice 4 campos que alimentarán las 4 facetas que usaremos para
+nuestra vista de recetas de cocina:
+¡¡Atención!! Para los términos de taxonomía se han de añadir los índices correspondientes a
+los nombres de los términos, no al ID.
+Para poder continuar debemos asegurarnos de que la base de datos se reindexa con la nueva
+configuración. Debéis hacer clic en los dos lugares marcados en la siguiente imagen en el orden
+que se indica:
+
+
+
+
+El siguiente paso es crear una vista que mostrará las recetas de cocina.
+
+¡¡Atención!! Para poder mostrar facetas , la vista no será de "contenidos" sino del índice
+nuevo que acabamos de crear:
+Ahora ya podemos añadir 4 nuevas facetas del tipo que se indican bajo ( check box y range
+slider):
+Por último, tendremos que configurar las facetas para que aparezcan en la vista que hemos
+creado en la URL /recetas. Las 4 facetas que hemos creado han generado 4 bloques. Debemos
+configurarlas para que aparezcan en la barra de la derecha (Sidebar Second). Esto, recordad, se
+realiza en la página Estructura > Disposición de los bloques.
+
+
+
+
+Se configurar los bloques para que sólo aparezcan en la URL /recetas:
+y con esto, la página de recetas ya debería funcionar. Puede ser necesario cuadrar las
+configuraciones de cada una de las facetas.
+Vista con filtros contextuales para mostrar conte nidos relacionados
+
+
+Es muy importante poder mostrar contenidos relacionados con la página que se está
+mostrando. Esto lo hace, por ejemplo, Amazon cuando nos muestra productos relacionados
+con un producto que estamos visitando. En Drupal esto se puede hacer de diferentes maneras.
+Aquí lo haremos con una vista que nos muestre contenidos que comparten algún término de
+taxonomía con la página que se está mostrando. Utilizaremos como ejemplo la creación de un
+bloque que muestra recetas que comparten ingredientes con la receta que se muestra.
+
+
+
+
+En primer lugar deberemos crear una vista de recetas que genere un bloque.
+A continuación, debemos añadir los campos que nos interesan (foto en miniatura y título), y
+dos filtros contextuales: "ID de contenido" (ID filter) y "tiene el ID del término de taxonomía"
+(Has taxonomy term ID). Se deben configurar de la siguiente forma:
+Inserta ahora el bloque en la columna de la derecha (Sidebar second) y haz que se muestre
+únicamente en los contenidos de tipo Receta:
+Vista contextual para mostrar todos los contenidos que apuntan a otro
+contenido
+
+
+Si lo recuerdas, el tipo de contenido Receta tenía un campo que denominamos "Restaurante"
+que era una referencia de contenido a elementos de tipo Restaurante. Su uso indicaba el
+restaurante que había proporcionado cada receta. Como ejercicio, deseamos que las páginas
+de los restaurantes muestren las listas de todas las recetas que han aportado.
+
+
+
+
+Para cumplir con este objetivo necesitaremos crear una vista que filtre todas las recetas que
+apuntan al restaurante que se está mostrando. Crearemos una vista de contenidos del tipo
+Receta que genere un bloque que muestre las miniaturas con los títulos. Para realizar el
+filtrado contextual, deberemos crear un filtro contextual en el campo Restaurante
+(field_restaurante) que coja el valor del ID del contenido de la URL:
+Esta vista creará un bloque que deberemos colocar en la columna de la derecha (Sidebar
+second) de forma que únicamente presente contenidos del tipo Restaurante.
+                  Bloques personalizados
+Drupal 9 proporciona un sistema sofisticado de bloques personalizados que permite generar
+bloques de contenido que están pensados para colocar en las zonas secundarias de la página:
+pies, cabecera, columnas laterales, etc.. Así, los contenidos (y sus tipos de contenidos" están
+pensados para suministrar el contenido principal de la página, y los bloques personalizados (y
+sus tipos de bloques personalizados) sirven para proporcionar los contenidos secundarios .
+
+Uso de los bloques personalizados
+
+
+Los bloques personalizados se controlan desde Estructura > Disposición de los bloques >
+Biblioteca de bloques personalizados. En esta página hay dos pestañas: Bloques y Tipos de
+bloques. En Bloques se encuentran una lista de los bloques que se han creado, y en Tipos de
+bloques la definición de los tipos, que funciona de forma muy parecida a la definición de tipo
+de contenidos (con la posibilidad de añadir campos y configurar la presentación de Front end y
+la del formulario de edición). Por defecto, Drupal 9 proporciona un tipo de bloque denominado
+bloque básico que tiene un título y un cuerpo de texto.
+
+Como ejercicio, crea tres bloques personalizados para colocar en las regiones: "Featured
+bottom first", "Featured bottom second" y "Featured bottom third". Selecciona que no se
+muestre el título delo blqoque, que tenga contenidos maquetados de forma diferente, y que
+se muestren únicamente en la página principal del sitio web (esto se encuentra en la
+configuración de cada uno de los bloques).
+Gestión de los banners de publicidad usando bloques personalizados
+
+
+Para gestionar la publicidad de la página, se creará un tipo de bloque personalizado
+denominado "Banner" que contenga los siguientes campos:
+
+       una foto
+       un campo de enlace (una URL)
+       un campo booleano para indicar si es un anuncio destacado o no.
+
+
+
+
+Añade como mínimo 5 o 6 banners para poder hacer pruebas. Te sugerimos que pongas fotos
+cuadradas dado que es el formato que desearemos más adelante.
+
+Configuración de filtros de imagen personalizados
+
+
+Drupal 9 permite configurar filtros de imágenes personalizados para ampliar los que vienen
+por defecto (imagen grande, mediana y miniatura). Se puede configurar los filtros en
+Configuración > Estilo de imagen.
+
+Para este ejercicio crearemos dos filtros de imagen que escalan y recortan la imagen para que
+sea cuadrada: "banner grande" a 200x200 y "banner pequeño" a 100x100:
+Vistas de bloques personalizados
+
+
+Ahora nos planteamos crear vistas que controlen la visualización de banners en la página. En
+esta ocasión, en lugar de crear 2 vistas distintas lo que haremos será usar una única vista
+"Banners" que tendrá dos presentaciones de bloque diferentes. Comprueba el resultado en la
+columna izquierda de la web que se presenta como ejemplo.
+
+Comenzaremos creando una vista de bloque personalizada de tipo "banner" que muestre los
+campos:
+Haz que la vista filtre por el campo "Destacado" (que tenga el valor cierto) y que muestre nada
+más un resultado. Haz que incluya dos campos: la URL del banner y la imagen del banner, y
+que la URL aparezca en la primera posición y que esté oculta. Lo haremos así para conseguir
+que la imagen esté enlazada con la URL del banner:
+Debemos conseguir que la URL esté oculta y que nada más produzca un texto plano (sin el
+nombre de la web).
+
+
+
+
+Ahora debemos configurar el campo "imagen banner" para que se reescriba y envuelva el
+HTML de la imagen con la etiqueta de enlace:
+Con esta vista tendremos generado un bloque que ya podemos colocar en la columna
+izquierda (Sidebar first). Recordad que debéis marcar algún bloque personalizado de los que
+hemos creado como "Destacado", si no el bloque aparecerá vacío.
+
+Ahora deseamos mostrar 4 banners más en tamaño pequeño, seleccionados aleatoriamente.
+Para realizar este cometido crearemos una nueva presentación de bloque aprovechando la
+misma vista. Lo hacemos así porque las condiciones del bloque serán muy parecidas y las
+podemos reciclar.
+
+
+
+
+En este nuevo bloque queremos cambiar algunas configuraciones. Pero es importante que
+cuando lo hagamos marquemos que sólo queremos hacerlo para esta presentación y no para
+todas.
+Cambiaremos los siguientes parámetros:
+
+       La vista mostrará 4 elementos
+       El campo de imagen se mostrará como un "banner pequeño"
+       El filtro de destacado estará a falso
+       Añadiremos un nuevo criterio de ordenación: "Aleatorio"
+
+Ha z que la vista se muestre en una rejilla de dos columnas
+
+Ahora ya se puede añadir el bloque después del bloque del banner destacado que hemos
+añadido anteriormente.
+                                         Ejercicios
+
+
+1) Haz que el perfil de usuario incluya un campo de texto con un lema y un campo de "cocina
+preferida" que permita un máximo de 2 tipos de cocina. Configura esto en Configuración >
+Parámetros de la cuenta. Haz que sea visible por parte de los usuarios anónimos (modificando
+la propiedad "Visualiza la información de usuario" en la sección Usuarios):
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal2/web/user/8
+
+
+
+
+2) Modifica la vista compacta del perfil de usuario para que aparezca el lema en la línea de
+información sobre el autor de los contenidos de tipo Artículo:
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal2/web/node/5
+3) Modifica la vista de administración "Contenido" que genera la página admin / content con
+tal de que incluya una miniatura cuadrada (tipo "banner pequeño) de las recetas de cocina.
+
+
+
+
+4) Haz que el perfil de usuario incluya un bloque al final de la sección "Contenido" generado
+por una vista que muestre una lista de títulos de contenidos y que es un filtro contextual por el
+campo "Elaborado por" (User ID) y coja el valor de la URL.
+

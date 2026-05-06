@@ -1,0 +1,477 @@
+                 1ª Parte : tipos de contenido,
+
+                              menús y taxonomías
+“Cuina vegà”: un sitio web de Drupal 8 de ejemplo
+
+
+Definición del caso
+
+“Cuina vegà” es un sitio web puesto en marcha por tres amigos (Sonia, Maite y Andreu) amantes de la cocina
+vegana. Han pensado que no hay demasiadas web serias sobre cocina y alimentos veganos, y además, cada vez hay
+más restaurantes veganos en todo el país que tienen la necesidad de promocionarse. Por ello, han decidido montar
+una cooperativa para posar en marcha un proyecto de publicación online sobre cocina vegana.
+
+En la fase inicial, “Cuina vegà” mostrará información de los siguientes tipos (ver diagrama en la página siguiente):
+
+• Artículos sobre temas diferentes, en particular sobre restaurantes, recetas, ingredientes y tipos de cocina
+
+• Restaurantes veganos
+
+• Recetas de cocina vegana
+
+• Páginas de información básica (quienes son , aspectos legales, etc.)
+
+Las recetas de cocina constarán de diferentes tipos de etiquetas para clasificarlos, siendo los dos más importantes:
+
+• Ingredientes
+
+• Tipos de cocina
+
+Las recetas también irán clasificadas por nivel de dificultad.
+
+Los restaurantes serán habitualmente quienes proporcionarán las recetas de cocina.
+
+Los tres socios de la cooperativa son en principio los autores del contenido, y tendrán una página pública de perfil
+con la información sobre ellos y sobre aquello que han escrito. Los usuarios anónimos deberán crearse una cuenta si
+quieren dejar comentarios.
+
+
+
+
+                                                            1
+.
+
+A medio término, la cooperativa pretende financiarse mediante banners de publicadad, que aparecerán en
+diferentes formas en la web.
+
+Durante las prácticas, iremos construyendo progresivamente el sitio web de Drupal para esta cooperativa.
+
+        Os proporcionaremos enlaces tutoriales en internet, que os servirán de ayuda. Os los podréis encontrar de
+        esta forma.
+
+Para tener la referencia, tendréis acceso al proyecto drupal resuelto para este caso, en la URL:
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal1/web
+
+
+                                               Aspectos básicos
+Información del sitio web
+
+En primer lugar se puede cambiar el nombre del sitio web y el lema desde la configuración general del sitio web.
+
+        Creating content
+        4.2. Editing Basic Site Information
+
+
+
+Creación de contenido
+
+Crea las páginas básicas "Quienes somos" e "Información legal". Haz que tengan un enlace a la navegación principal y
+al menú de pié de página, respectivamente.
+
+
+                                                           2
+Para que te aparezca el menú "Pié de página" como una posibilidad cuando edites "Información legal", primero
+tienes que editar el tipo de contenido "Página básica" en Estructura>Tipos de contenido>Página básica.
+
+
+
+
+       Chapter 5. Basic Page Management
+
+Crea como mínimo tres entradas de tipo artículo. Añade una foto usando el campo "image" que tiene este tipo de
+contenidos. Crea diferentes términos de la taxonomía "Etiquetas".
+
+Edita cada término que has creado para que incluya una descripción cuando entras en su página.
+
+
+
+
+Instalación de módulos con composer
+
+
+La primera instalación de un módulo adicional la vamos a realizar con el módulo Address. Este módulo añade u tipo
+de campo especial para las direcciones postales.
+
+https://www.drupal.org/project/address
+
+
+
+                                                        3
+Aquí haremos la instalación haciendo uso de composer. También puede instalarse manualmente, descargando el
+fichero de instalación de la página anteriormente referida y usando la web de administración de Drupal. A través del
+botón "Instala un módulo nuevo" que aparece en Ampliar.
+
+
+
+
+Sin embargo, instalar módulos de esta forma puede originar problemas. Existen módulos que requieren instalar
+bibliotecas adicionales. Por eso usaremos Composer, que ya hemos instalado, dado que descarga los módulos y
+todas sus dependencias.
+
+Las instrucciones para la instalación del módulo Address se pueden encontrar en la página de drupal.org para el
+módulo:
+
+
+
+
+Tenéis que ejecutar el comando indicado en el directorio raíz el sitio web Drupal en el que se está trabajando, que
+será una ruta similar a la siguiente:
+
+/var/www/html/drupal1/
+
+# composer require "drupal/address ~1.0"
+
+Además, una vez realizada esta acción, se deberá activar el módulo desde la página "Ampliar" de la administración
+del sitio web:
+
+
+                                                          4
+Creación de tipos de contenido nuevo
+
+
+Comenzaremos creando un tipo de contenido llamado restaurante, que nos permitirá guardar la información relativa
+a los restaurantes.
+
+        Chapter 6. Setting Up Content Structure
+        Adding a new content type
+        Adding a new field
+
+
+
+
+Los campos del tipo restaurante serán los siguientes:
+
+
+
+
+                                                        5
+                                                                                            El campo dirección
+necesita configurar que campos de la dirección postal necesitamos:
+
+
+
+
+El campo Fotos será multivaluado (con un número ilimitado) dado que más adelante queremos instalar una galería
+de fotos.
+
+El campo Rango de precios es un tipo referencia a taxonomía. Antes de crear el campo debes crear la taxonomía en
+Estructura>Taxonomía. Le pondremos también el nombre "Rango de Precios" y le añadiremos tres términos para
+indicar como de caro es un restaurante.
+
+       .Using taxonomies to label contents
+
+
+
+Una vez creada la taxonomía, ya puedes crear en el tipo de contenido Restaurante, un campo de referencia a
+término que apunta a un término de la taxonomía "Rango de Precios".
+
+
+
+
+                                                        6
+                                                                                           Haz que el tipo de
+contenido Restaurante no sea promocionado a portada por defecto, para que no aparezca en la página principal.
+Esto se configura en la edición del tipo de contenido, en las "Opciones de publicación".
+
+Configuración del formulario de creación de contenido nuevo
+
+Con Drupal podemos configurar el aspecto del formulario para la creación de contenido que usen las personas que
+introduzcan información en la web. Esto se configura desde la opción "Gestiona la presentación del formulario" de la
+configuración del tipo de contenido.
+
+Para el tipo Restaurante, configura el formulario para que tenga el aspecto siguiente, incluyendo los textos
+explicativos y los tipos de widget. A continuación, introduce 3 restaurantes nuevos usando el formulario que has
+creado.
+
+
+
+
+                                                         7
+8
+la presentación
+
+La opción "configuración de la presentación" del tipo contenido nos permite configurar como se presenta el tipo de
+contenido en diferentes contextos. La opción "Default" es la que determina la vista normal de página completa. La
+opción "Resumen" la usaremos más adelante para definir como se muestra la información en los listados de
+resultados.
+
+
+
+
+Configura la presentación del tipo Restaurante para que tenga la apariencia que tiene en la web de muestra: (en
+sesiones posteriores de las prácticas trabajaremos más la apariencia).
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal1/web/node/6
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal1/web/node/7
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal1/web/node/8
+
+
+
+
+                                                         9
+Creación del tipo “Receta”
+
+La creación del tipo receta requerirá la creación previa de tres taxonomías:
+
+Dificultad, tipo de cocina e ingrediente.
+
+La taxonomía Dificultad tendrá tres términos: Alta, Media y Baja.
+
+La taxonomía Tipo de cocina tendrá un número más amplio de términos: mediterránea, mexicana, tailandesa,
+japonesa, etc.
+
+
+
+                                                          10
+La taxonomía Ingredientes será la más compleja de todas. En primer lugar, añádele un campo imagen para
+asegurarse de que las descripciones de los ingredientes tendrán siempre una foto. Configura también la
+presentación y la presentación del formulario.
+
+
+
+
+ En segundo lugar la taxonomía debe ser jerárquica, clasificando los ingredientes en grupos y en subgrupos. Lo
+siguiente es un ejemplo:
+
+
+
+
+                                                         11
+A continuación, crea el tipo de contenido receta con los siguientes campos:
+
+
+
+
+                                                         12
+Tenemos dos campos diferentes para los ingredientes: ingredientes principales es una lista (multivaluada) de
+términos de la taxonomía Ingredientes, que servirá para destacar los ingredientes principales de una receta; Lista de
+ingredientes es un campo de texto que mostrará la lista de ingredientes completa (incluyendo aceite, pimienta, sal,
+etc...).
+
+El tiempo de elaboración será un campo numérico que indicará el número de minutos. Tendrá un tiempo por
+defecto de 45 minutos, y un prefijo minuto o minutos que se añadirá automáticamente.
+
+
+
+
+El campo Restaurante será una referencia a contenido, que apuntará a una página de tipo Restaurante. Se utilizará
+para marcar cual es el restaurante que ha proporcionado esta receta.
+
+
+
+
+                                                         13
+Configura la visualización del formulario para que tenga el siguiente aspecto:
+
+
+
+
+                                                          14
+Ahora queremos que la receta de cocina se muestre de la siguiente manera:
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal1/web/node/9
+                                                      15
+Para lo cual necesitaremos hacer alguna cosa antes (¡continua leyendo!)
+
+
+
+
+Fíjate en la configuración de los diferentes campos; en particular del campo Restaurante. Este campo está
+configurado como "Entidad renderizada" en modo "Resumen". Esto quiere decir que el restaurante que apuntamos
+con el campo de referencia a contenido se mostrara renderizado en la modalidad de visualización que elijamos, que
+en nuestro caso es "Resumen".
+
+
+
+
+                                                        16
+Tendremos que configurar la vista de "Resumen" del tipo de contenido Restaurante para que muestre la información
+que deseemos, que en este caso no será nada más que la dirección postal y las fotos en miniatura.
+
+
+
+
+                                                      17
+A continuación crea unas cuantas recetas de cocina (6 o 7) para poder tener información que se utilicen en las
+prácticas posteriores, cuando definiremos los listados de contenidos y las herramientas de búsqueda.
+
+Gestión básica de usuarios
+
+        Managing user accounts
+
+La gestión de los usuarios se realiza desde la sección Usuarios. Nada más entrar en esta sección podemos ver 4
+opciones relevantes:
+
+
+
+
+Añadir un usuario: permite a los administradores crear usuarios. Más adelante veremos cómo configurar la creación
+de usuarios por parte de los visitantes anónimos,
+
+Listado es la lista de usuarios.
+
+Permisos muestra la tabla de permisos para realizar diferentes tipos de acciones.
+
+Roles se utilizan para definir conjuntos de permisos. Los roles por defecto son usuario anónimo, usuario identificado,
+(es decir, que ha hecho login) y administrador.
+
+—
+
+En la web de ejemplo queremos configurar permisos de la siguiente manera:
+
+• Los usuarios anónimos pueden leer los comentarios pero no pueden escribirlos
+
+• Los usuarios autenticados pueden escribir comentarios pero no pueden añadir otros tipos de contenidos.
+
+.• Los usuarios "editores" (un rol nuevo que crearemos) pueden hacer las cosas que hacen los autenticados, y
+además pueden administrar comentarios y editar sus comentarios propios. Respecto del contenido, pueden crear
+contenido nuevo, suprimir contenido propio y editar contenido propio de tipo Artículo, Receta y Res taurante (pero
+no de página básica, que nada más podrá ser editado por administradores)
+
+Configura los roles y los permisos para que funciones así. Crea dos usuarios nuevos:
+
+un usuario básico (que puede autenticarse) y un usuario que tenga también el rol de editor. Configura todos sus
+campos incluyendo la foto. Comprueba con estos usuarios que has configurado bien los permisos.
+
+Por ejemplo:
+
+                                                         18
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal1/web/node/5
+
+
+
+
+Puedes cambiar quién es el autor de un contenido desde la página de edición.
+
+
+
+
+                                                       19
+20
+Gestión de los comentarios
+
+Drupal 8 posibilita que todas las entidades que acepten campos (en inglés, fieldable) puedan incorporar una zona de
+comentarios para que los usuarios puedan interactuar con los contenidos. Por entidades fieldable entendemos:
+
+• Los contenidos
+
+• Los términos de taxonomía
+
+• Los usuarios
+
+El modo de añadir comentarios a cualquiera de las entidades es añadir un campo de tipo comentario. Los
+comentarios pueden ser de tipos diferentes, es decir, pueden tener campos diferentes. Los tipos de comentarios se
+gestionan desde Estructura>Tipos de Comentarios.
+
+Por defecto, Drupal incorpora un tipo de comentario por defecto que solo tiene un campo Text con formato largo.
+
+
+
+
+—
+
+En la página de ejemplo
+
+• Añade un campo de comentarios del tipo comentarios por defecto al tipo de contenido Restaurante. Comprue ba
+que los usuarios autenticados pueden añadir comentarios a los restaurantes.
+
+• Crea un nuevo tipo de comentarios que diga: "Comentarios fotográficos". Este tipo de comentarios no tendrá
+texto, solo un campo con foto. Se utilizará para que los usuarios puedan enviar fotos resultado de cocinar las recetas
+de la página. Se debe añadir un campo de comentarios "fotográfico" al tipo de contenido Receta y comprobar que
+los usuarios pueden subir fotos.
+
+
+
+
+                                                          21
+22
+23
+
+
+     28
+Introducción a las vistas
+
+        Creating listings with views
+
+
+
+Las vistas son un mecanismo que proporciona Drupal para generar tipos de listados de elementos de información.
+Las vistas pueden listar:
+
+• contenidos,
+
+• términos de taxonomía,
+
+• usuarios,
+
+• comentarios,
+
+• bloques personalizados,
+
+• ficheros, etc.
+
+Las vistas son extremadamente versátiles. En esta sesión de prácticas haremos diferentes ejemplos de aplicación de
+las vistas.
+
+Vista sencilla de contenidos con presentación de resúmenes
+
+
+Crea una vista para mostrar todos los artículos por orden de más reciente a más antiguo. Se tienen que mostrar los
+resúmenes de los artículos. Edita el modo de visualización "Resumen" del tipo de contenido Artículo para que
+aparezca como se ve en:
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal1/web/articles
+
+(miniaturas de las fotos, texto recortado a 100 palabras, etc.)
+
+
+
+
+                                                          24
+25
+Vista sencilla de restaurantes con presentación de campos
+Las vistas permiten usar la vista de "Resumen", como en el ejemplo anterior, pero también permiten seleccionar los
+campos concretos que se mostrarán en la vista. Configura la vista de restaurantes en la que se muestre:
+
+• El nombre del restaurante, la ciudad donde está (subcampo locality del campo de dirección) y una miniatura de la
+primera de las imágenes que tiene (esto se configura en la sección "parámetros de campos múltiples" de las
+propiedades del campo)
+
+• Haz que se muestren por orden alfabético de nombre.
+
+•Haz que el nombre y la miniatura apunten a la página completa (esto se configura en las propiedades de cada
+campo)
+
+• Haz que el título y la ciudad aparezcan alineados y separados por el signo '-' (esto se hace en Formato - Muestra-
+Parámetros)
+
+http://dsw-base-d8-exemple.dsicv.upv.es/drupal1/web/restaurants
+
+                                                          26
+27
+Vista sencilla de términos de taxonomía que genera un bloque
+Las vistas se pueden usar para mostrar términos de taxonomía, y también se pueden usar para generar bloques. Los
+bloques son "cuadros" de contenido que se pueden colocar en las diferentes regiones. En el ejemplo, usaremos una
+vista para generar un bloque que mostrará la lista de tipos de cocina que hay, con enlaces a las págnas de los tipos
+de cocina, y colocaremos el bloque en la columna lateral izquierda.
+
+
+
+
+                                                         28
+El bloque generado por la vista se ubica en la región con la sección Estructura > Disposición de los bloques.
+
+
+
+
+                                                          29
+El título se puede sobreescribir en la opción de configuración del bloque..
+
+
+
+
+                                                          30
+

@@ -1,0 +1,491 @@
+                   Instalación de Drupal 9 sobre CentOS 7
+
+  Configuraciones previas de la máquina virtual del laboratorio del DSIC
+
+Acceso:
+
+Usuario: root
+
+Contraseña: Dsic.2017
+
+Pasos:
+Actualizar repositorios de yum
+Primero es necesario reemplazar el fichero de /etc/yum.repos.d/CentOS-Base.repo con el
+fichero disponible en poliformat aquí.
+# yum clean all
+
+# yum -y update
+
+Puede tardar un poco.
+Instalar un editor de texto
+# yum install nano
+
+Dependencias software de drupal
+Se pueden encontrar en:
+
+https://www.drupal.org/docs/understanding-drupal/how-drupal-9-was-made-and-what-is-
+included/environment-requirements-of-drupal-9
+
+- Apache
+
+# yum -y install httpd
+
+Para dar acceso desde fuera al cortafuegos:
+
+# firewall-cmd --permanent --add-port=80/tcp
+
+# firewall-cmd --permanent --add-port=443/tcp
+
+# firewall-cmd --reload
+
+En el fichero de configuración de Apache /etc/httpd/conf/httpd.conf,
+
+cambiar la línea siguiente:
+
+<Directory “/var/www/html">
+
+# Comentarios...
+
+
+                                              1
+# ...
+
+AllowOverride None
+
+#...
+
+</Directory>
+
+Por
+
+AllowOverride All
+
+Arrancar Apache
+
+# systemctl start httpd
+
+Para hacer que Apache arranque por defecto cuando se enciende la máquina:
+
+# systemctl enable httpd
+
+- MySql
+
+Añadir el repositorio de yum. Crear el fichero/etc/yum.repos.d/mariadb.repocon el
+contenido:
+
+[mariadb]
+name = MariaDB
+baseurl = https://archive.mariadb.org/mariadb-10.1.48/yum/centos7-amd64/
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+
+Para instalar y poner en marcha MariaDB se usa:
+
+
+# yum makecache fast
+# yum -y install MariaDB-server MariaDB-client
+# systemctl enable --now mariadb
+
+
+
+
+Configurar permisos de ejecución:
+
+
+# mysql_secure_installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+SERVERS IN PRODUCTION USE! PLEASE READ EACH STEP CAREFULLY!
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user. If you've just installed MariaDB, and
+you haven't set the root password yet, the password will be blank,
+so you should just press enter here.
+Enter current password for root (enter for none): [Pulsar ENTER]
+OK, successfully used password, moving on...
+Setting the root password ensures that nobody can log into the MariaDB
+root user without the proper authorisation.
+Set root password? [Y/n] y
+
+
+
+                                                  2
+New password: [ Poner una contraseña QUE NO SE OLVIDE. Puede ser la
+misma que la de root de la máquina linux ]
+Re-enter new password: [vuelve a introducir la contraseña]
+Password updated successfully!
+Reloading privilege tables..
+... Success!
+By default, a MariaDB installation has an anonymous user, allowing
+anyone
+to log into MariaDB without having to have a user account created for
+them. This is intended only for testing, and to make the installation
+go a bit smoother. You should remove them before moving into a
+production environment.
+Remove anonymous users? [Y/n] y
+... Success!
+Normally, root should only be allowed to connect from 'localhost'.
+This
+ensures that someone cannot guess at the root password from the
+network.
+Disallow root login remotely? [Y/n] y
+... Success!
+By default, MariaDB comes with a database named 'test' that anyone can
+access. This is also intended only for testing, and should be removed
+before moving into a production environment.
+Remove test database and access to it? [Y/n] y
+- Dropping test database...
+... Success!
+
+- Removing privileges on test database...
+
+... Success!
+
+Reloading the privilege tables will ensure that all changes made
+so far
+
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] y
+
+... Success!
+
+Cleaning up...
+
+All done! If you've completed all of the above steps, your
+MariaDB
+
+installation should now be secure.
+
+Thanks for using MariaDB!
+
+Vamos a comprobar que la instalación de MySql ha sido correcta y que la contraseña
+introducida nos da acceso:
+
+# mysql -u root -p
+
+Enter password: [ escribe aquí la contraseña de antes ]
+
+Welcome to the MariaDB monitor. Commands end with ; or g.
+
+
+                                            3
+Your MariaDB connection id is 9
+
+Server version: 5.5.34-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2013, Oracle, Monty Program Ab and others.
+
+Type 'help;' or 'h' for help. Type 'c' to clear the current
+input
+
+statement.
+
+MariaDB [(none)]> exit
+
+- Php
+
+Se instalan los repositorios EPEL y Remi:
+
+
+
+
+# yum install http://rpms.remirepo.net/enterprise/remi-
+
+release-7.rpm
+
+Se instala las utilidades yum:
+
+# yum install yum-utils
+
+Para instalar PHP 8.3 se usa el config manager de yum:
+
+# yum-config-manager --enable remi-php83
+
+# yum install php php-mcrypt php-cli php-gd php-curl php-mysql
+
+php-ldap php-zip php-fileinfo
+
+Instalar bibliotecas PHP necesarias para Drupal:
+
+# yum install php-mbstring
+
+# yum install php-xml
+
+# yum install php-opcache
+
+Para completar la instalación, reiniciar la máquina virtual.
+
+Vamos a comprobar que PHP se ejecuta correctamente a través de Apache. Para ello podemos
+crear el fichero /var/www/html/phpinfo.phpcon los siguientes contenidos:
+
+<?php
+
+// Show all information, defaults to INFO_ALL
+
+
+
+                                                4
+phpinfo();
+?>
+# chown -R apache:apache /var/www/html/phpinfo.php
+
+Hay que dar permisos a apache para acceder a phpinfo.php. Ahora desde un navegador de la máquina
+virtual se accede a la URL localhost/phpinfo.php
+Debería aparecer una página con información sobre la instalación de PHP.
+
+
+
+
+- Instalación de Composer
+Composer es un paquete para la gestión de bibliotecas de PHP. Se utiliza para instalar módulos
+de Drupal e incluso para instancias de Drupal.
+
+# php -r "copy('https://getcomposer.org/installer', 'composer-
+
+setup.php');"
+
+# HASH="$(wget -q -O - https://composer.github.io/
+
+installer.sig)” [La O en „-O‟ es una O mayúscula.]
+
+# php -r "if (hash_file('SHA384', 'composer-setup.php') ===
+
+'$HASH') { echo 'Installer verified'; } else { echo 'Installer
+
+
+                                             5
+corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+
+Después de este comando. debería aparecer en pantalla el mensaje "Installer verified". A
+continuación debe introducirse:
+
+# php composer-setup.php --install-dir=/usr/local/bin --
+filename=composer
+
+
+
+                                Instalación de Drupal 9
+
+
+La última versión de Drupal 9 se puede descargar de la URL
+
+https://www.drupal.org/download
+
+La creación de un sitio web nuevo con Drupal 9 consiste en una serie de etapas que se pueden
+seguir siempre que se necesita crear un sitio nuevo. En un mismo servidor pueden coexistir
+varios sitos de Drupal. Estas fases o etapas son:
+
+1. Crear una base de datos para el sitio web
+
+2. Creación de una instancia de Drupal: descargar Drupal (aunque se puede hacer
+manualmente, aquí usaremos el instalador Composer, anteriormente instalado).
+
+3. Configurar el sitio Drupal, incluyendo la conexión con la base de datos
+
+
+
+1. Crear una base de datos para el sitio web
+
+En primer lugar resaltar que conviene usar un nombre para la base de datos, un usuario y una
+contraseña que recuerdes con facilidad, y que no se olvide. Para facilitar este objetivo vamos a
+usar drupal como nombre de usuario y de la base de datos. Aunque luego podemos cambiarlo
+(y de hecho hace falta si quieres usar más de una base de datos para más de un sitio web de
+Drupal).
+
+# mysql -u root -p
+
+Enter password: [Introducimos la contraseña de MySQL]
+
+Welcome to the MariaDB monitor. Commands end with ; or \g.
+
+Your MariaDB connection id is 4
+
+Server version: 5.5.63-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and
+
+others.
+
+
+
+                                               6
+Type 'help;' or '\h' for help. Type '\c' to clear the current
+
+input statement.
+
+MariaDB [(none)]> create database drupal1;
+
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [(none)]> create user drupal1@localhost identified by
+
+'esta es la contraseña del usuario drupal1';
+
+Query OK, 0 rows affected (0.01 sec)
+
+MariaDB [(none)]> grant all privileges on drupal1.* to
+
+drupal1@localhost;
+
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]> flush privileges;
+
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]> exit
+
+Bye
+
+Reinicia mySql:
+
+# systemctl restart mysql
+
+2. Creación de una instancia de Drupal
+
+Instalaremos una instancia en my_site_name_dir, que será un subdirectorio de
+/var/www/html. (por ejemplo drupal1)
+
+Usaremos composer de la siguiente forma:
+
+
+# composer create-project drupal/recommended-project
+/var/www/html/my_site_name_dir --no-interaction
+
+# composer config --no-interaction allow-plugins.composer/
+installers true
+# composer config --no-interaction allow-plugins.drupal/core-
+composer-scaffold true
+# composer config --no-interaction allow-plugins.drupal/core-
+project-message true
+# composer require drush/drush
+# mkdir /var/www/html/my_site_name_dir/web/sites/default/files
+# mkdir /var/www/html/my_site_name_dir/web/sites/default/files/translations
+
+
+
+                                            7
+Se deben proporcionar permisos a Apache para que pueda acceder a este nuevo directorio:
+
+# chown -R apache:apache /var/www/html/my_site_name_dir
+
+3. Configurar el sitio Drupal
+
+En este punto se debería poder acceder desde el navegador y entrar en la URL:
+
+http://localhost/my_site_name_dir/web
+
+Se debe introducir en primer lugar la configuración de la base de datos donde se almacenará la
+información del sitio web:
+
+
+
+
+Más adelante en el proceso se pone el nombre al sitio web, un nombre de usuario de
+administrador, una dirección de correo electrónico, país zona horaria. Se debe configurar
+como que se comprueban las actualizaciones pero no se envían correos electrónicos.
+
+Ahora se puede acceder al sitio web de Drupal dentro de la máquina virtual en la URL:
+
+http://localhost/my_site_name_dir/web
+
+Dado que es un servidor, también se puede acceder desde fuera, usando el nombre de la
+máquina virtual asignada, en lugar de localhost:
+
+http://DSW-001-CentOS-Drupal8.dsic.cloud/my_site_name_dir/web
+
+
+
+
+                                             8
+Hacer copias de seguridad en Drupal
+
+Para hacer una copia de un sitio web Drupal se deben seguir varios pasos:
+
+1. Copiar la base de datos
+
+# mkdir ~/backups
+
+# mysqldump -u usuario -p nom_base_datos >
+~/backups/nom_base.sql
+
+Enter password: [aquí se utiliza la contraseña del usuario de la
+base de datos]
+
+esto realizaría un fichero de backup (nom_base.sql).
+
+2. Copiar los ficheros del directorio donde está el sitio web
+
+Para hacer un backup de los ficheros del directorio del sitio web se puede hacer:
+
+# cd /var/www/html/
+
+# tar zcvf ~/backups/directorio_drupal.tgz directorio_web_drupal
+
+Estos comandos crearían un fichero comprimido con el contenido de los ficheros del sitio web.
+
+Hacer un clón
+
+Se puede hacer un clón de un sitio web usando el backup mostrado en el proceso anterior.
+Para ello debemos crear una base de datos nueva para la nueva web (dado que es otra
+distinta). Se pueden seguir las instrucciones vistas en este manual, creando la base de datos, el
+usuario y la contraseña. A continuación se pueden volcar los contenidos del backup en la
+nueva base de datos:
+
+# mysql -u nuevo_usuario -p nueva_base < ~/backsups/nom_base.sql
+
+Enter password: [nueva contraseña]
+
+También es necesario crear un nuevo subdirectorio en /var/www/html con la copia de los
+ficheros que se desea clonar. Se puede descomprimir el fichero tar o hacer una copia directa:
+
+# cd /var/www/html
+
+# cp -r directorio_original directorio_clonado
+
+También es necesario editar el fichero de configuración, en su parte final:
+
+/var/www/html/directori_clonat/web/sites/default/settings.php
+
+E introducir los datos de la base de datos clonada (dado que no hacemos el proceso guiado
+configuración inicial de drupal).
+
+$databases['default']['default'] = array (
+
+                                               9
+'database' => „nueva_base‟,
+
+'username' => „nuevo_usuario',
+
+'password' => „nueva_contrasenya',
+
+'prefix' => '',
+
+'host' => 'localhost',
+
+'port' => '3306',
+
+'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+
+'driver' => 'mysql',
+
+);
+
+Un último paso consistiría en borrar las caches de la página clonada, que se corresponden al
+anterior sitio web. Esto se hace ejecutando el comando siguiente en el directorio de la
+instalación del clon de Drupal, en nuestro ejemplo sería:
+/var/www/html/directorio_clonado/
+
+# vendor/bin/drush cache-rebuild
+
+[success] Cache rebuild complete.
+
+Esto nos permitiría acceder al clon de nuestro web en:
+
+http://localhost/directorio_clonado/web
+
+
+
+
+                                             10
+
